@@ -172,6 +172,7 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
         if (localizacion == null){
             Toast.makeText(this, "Esperando geolocalización", Toast.LENGTH_SHORT).show();
             return false;
+            
         } else {
             return true;
         }
