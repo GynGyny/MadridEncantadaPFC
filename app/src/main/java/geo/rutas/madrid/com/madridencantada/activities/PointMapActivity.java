@@ -17,6 +17,7 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.appindexing.Thing;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -44,6 +45,7 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     private TextView tvMiniMapName;
     private List<Lugar> lugaresList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +60,7 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 
-       // setContentView(R.layout.activity_point_map); //si pongo esta sentencia peta la app REVISARRRRR
+        // setContentView(R.layout.activity_point_map); //si pongo esta sentencia peta la app REVISARRRRR
 
        /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarmap);
         setSupportActionBar(toolbar);
@@ -85,14 +87,19 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-        for (int i =0; i<lugaresList.size();i++){
+        float zoomLevel = (float) 14; //puede llegar hasta 21
+        LatLng primerSitio = new LatLng(lugaresList.get(1).getLatitudLongitud().latitude, lugaresList.get(1).getLatitudLongitud().longitude);
+        for (int i = 0; i < lugaresList.size(); i++) {
             // Add a marker in -- and move the camera
             LatLng lugar = new LatLng(lugaresList.get(i).getLatitudLongitud().latitude, lugaresList.get(i).getLatitudLongitud().longitude);
             mMap.addMarker(new MarkerOptions().position(lugar).title(lugaresList.get(i).getNombre()));
-           // mMap.moveCamera(CameraUpdateFactory.newLatLng(lugar));*/
-
+            //mMap.moveCamera(CameraUpdateFactory.newLatLng(luga9));
         }
+        //para hacer zoom y que salgan todos los puntos del mapa
+       mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(primerSitio,zoomLevel)); 
+
+
+
     }
 
     /**
@@ -132,9 +139,9 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     }
 
     public void createData() {
-        Lugar reinaSofia = new Lugar(getString(R.string.sofia),"Hospital", "Medium", "No lo sé",R.drawable.museo_reina_sofia, 40.407969, -3.694804);
-        Lugar bancoEspania = new Lugar(getString(R.string.banco),"Banco", "Monja", "A veces", R.drawable.banco_de_espana, 40.418740, -3.694601);
-        Lugar ayuntamiento = new Lugar(getString(R.string.ayuntamiento),"Palacio Comunicaciones", "Masacre", "Metro Banco España", R.drawable.madrid, 40.418633, -3.692476);
+        Lugar reinaSofia = new Lugar(getString(R.string.sofia), "Hospital", "Medium", "No lo sé", R.drawable.museo_reina_sofia, 40.407969, -3.694804);
+        Lugar bancoEspania = new Lugar(getString(R.string.banco), "Banco", "Monja", "A veces", R.drawable.banco_de_espana, 40.418740, -3.694601);
+        Lugar ayuntamiento = new Lugar(getString(R.string.ayuntamiento), "Palacio Comunicaciones", "Masacre", "Metro Banco España", R.drawable.madrid, 40.418633, -3.692476);
         Lugar linares = new Lugar(getString(R.string.linares), "Casa de América", "Psicofonías", "Recoletos", R.drawable.casa_de_america, 40.419947, -3.692248);
         lugaresList = new ArrayList<Lugar>();
         lugaresList.add(reinaSofia);
@@ -142,6 +149,7 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
         lugaresList.add(ayuntamiento);
         lugaresList.add(linares);
     }
+
     public void fillView() {   // pintar los datos en la vista
 
     }
