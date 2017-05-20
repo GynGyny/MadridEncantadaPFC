@@ -1,8 +1,17 @@
 package geo.rutas.madrid.com.madridencantada.activities;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -12,10 +21,15 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import geo.rutas.madrid.com.madridencantada.R;
+import models.Lugar;
 
 public class PointMapActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -26,10 +40,16 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
      */
     private GoogleApiClient client;
 
+    private ImageView ivMiniMapPlace;
+    private TextView tvMiniMapName;
+    private List<Lugar> lugaresList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_point_map);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -37,6 +57,19 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+       // setContentView(R.layout.activity_point_map); //si pongo esta sentencia peta la app REVISARRRRR
+
+       /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarmap);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle(getString(R.string.map));*/
+
+        ivMiniMapPlace = (ImageView) findViewById(R.id.iv_MiniMapPlace);
+        tvMiniMapName = (TextView) findViewById(R.id.tv_MiniMapName);
+
+        createData();
+
+
     }
 
 
@@ -53,10 +86,13 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        for (int i =0; i<lugaresList.size();i++){
+            // Add a marker in -- and move the camera
+            LatLng lugar = new LatLng(lugaresList.get(i).getLatitudLongitud().latitude, lugaresList.get(i).getLatitudLongitud().longitude);
+            mMap.addMarker(new MarkerOptions().position(lugar).title(lugaresList.get(i).getNombre()));
+           // mMap.moveCamera(CameraUpdateFactory.newLatLng(lugar));*/
+
+        }
     }
 
     /**
@@ -93,5 +129,20 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         AppIndex.AppIndexApi.end(client, getIndexApiAction());
         client.disconnect();
+    }
+
+    public void createData() {
+        Lugar reinaSofia = new Lugar(getString(R.string.sofia),"Hospital", "Medium", "No lo sé",R.drawable.museo_reina_sofia, 40.407969, -3.694804);
+        Lugar bancoEspania = new Lugar(getString(R.string.banco),"Banco", "Monja", "A veces", R.drawable.banco_de_espana, 40.418740, -3.694601);
+        Lugar ayuntamiento = new Lugar(getString(R.string.ayuntamiento),"Palacio Comunicaciones", "Masacre", "Metro Banco España", R.drawable.madrid, 40.418633, -3.692476);
+        Lugar linares = new Lugar(getString(R.string.linares), "Casa de América", "Psicofonías", "Recoletos", R.drawable.casa_de_america, 40.419947, -3.692248);
+        lugaresList = new ArrayList<Lugar>();
+        lugaresList.add(reinaSofia);
+        lugaresList.add(bancoEspania);
+        lugaresList.add(ayuntamiento);
+        lugaresList.add(linares);
+    }
+    public void fillView() {   // pintar los datos en la vista
+
     }
 }

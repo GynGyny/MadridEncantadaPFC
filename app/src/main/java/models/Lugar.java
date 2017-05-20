@@ -3,7 +3,7 @@ package models;
 import com.google.android.gms.maps.model.LatLng;
 
 /**
- * Lugar donde está la
+ * Lugar donde está el array con lo que va a ver en la pantalla propia del sitio
  */
 
 public class Lugar {
