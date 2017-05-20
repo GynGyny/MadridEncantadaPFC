@@ -76,10 +76,9 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
         mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
 
 
-
     }
 
-    public void getData(){
+    public void getData() {
         //lo que hemos enviado desde "AllPoint.." para que "pinte" los datos de un sitio concreto
         Intent intent = getIntent();
 
@@ -90,10 +89,10 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
         Integer refImagen = intent.getIntExtra("imagen", R.drawable.cast_album_art_placeholder);
         Double latitud = intent.getDoubleExtra("latitud", 0.0);
         Double longitud = intent.getDoubleExtra("longitud", 0.0);
-        lugar = new Lugar (nombre, historia, leyenda, informacion, refImagen, latitud, longitud);
+        lugar = new Lugar(nombre, historia, leyenda, informacion, refImagen, latitud, longitud);
     }
 
-    public void fillView(){   // pintar los datos en la vista
+    public void fillView() {   // pintar los datos en la vista
         getSupportActionBar().setTitle(lugar.getNombre());
         tvHistory.setText(lugar.getHistoria());
         tvLegend.setText(lugar.getLeyenda());
@@ -101,7 +100,7 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
         ivPlace.setImageResource(lugar.getImagen());
     }
 
-    public void setOnClickListenerForButtons (){
+    public void setOnClickListenerForButtons() {
         btGoToMap.setOnClickListener(this);
         btGoToAudio.setOnClickListener(this);
 
@@ -110,7 +109,7 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
 
-        if (v==btGoToAudio){
+        if (v == btGoToAudio) {
         } else {   //click en goToMap
             if (isGpsActive() && isUserLocated()) {
                 goToMap();
@@ -119,13 +118,13 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void goToMap() {
-      //  Uri gmmIntentUri = Uri.parse("geo:40.337175,-3.875594"); //"geo:"+
-        Uri gmmIntentUri = Uri.parse("geo:"+lugar.getLatitudLongitud().latitude+","+lugar.getLatitudLongitud().longitude);
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mapIntent);
-        }
+        //Puntos de geolocaciolazación, 1º dónde estoy, 2º dónde voy
+        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                Uri.parse("http://maps.google.com/maps?saddr=" + localizacion.getLatitude() + "," +
+                        localizacion.getLongitude() + "&daddr=" + lugar.getLatitudLongitud().latitude +
+                        "," + lugar.getLatitudLongitud().longitude));
+        startActivity(intent);
+
     }
 
 
@@ -133,6 +132,7 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
     public void onLocationChanged(Location location) {
         //Toast.makeText(this,"LOCALIZACIÓN --> " +location.getLatitude()+"  "+location.getLongitude(), Toast.LENGTH_SHORT).show();
         Log.i("GEOLOCALIZACIÓN -->", location.toString());
+
         localizacion = location;
 
     }
@@ -152,14 +152,14 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-    public boolean isGpsActive (){
+    public boolean isGpsActive() {
         boolean gps_enabled = false;
         boolean network_enabled = false;
         gps_enabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         network_enabled = mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-        if(!gps_enabled && !network_enabled) {
-            Toast.makeText(this,"Se necesitan permisos de Geolocalización",Toast.LENGTH_LONG).show();
-            Intent myIntent = new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        if (!gps_enabled && !network_enabled) {
+            Toast.makeText(this, "Se necesitan permisos de Geolocalización", Toast.LENGTH_LONG).show();
+            Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
             startActivity(myIntent);
             return false;
         } else
@@ -167,12 +167,11 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
     }
 
 
-    public boolean isUserLocated (){
+    public boolean isUserLocated() {
         //comprobamos si hemos geolocalizado al usuario
-        if (localizacion == null){
+        if (localizacion == null) {
             Toast.makeText(this, "Esperando geolocalización", Toast.LENGTH_SHORT).show();
             return false;
-            
         } else {
             return true;
         }
