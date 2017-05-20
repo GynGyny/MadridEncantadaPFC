@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Madrid Encantada</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="map">Mapa</string>
+    <string name="points_of_interest">Puntos de interés</string>
+    <string name="options">Opciones</string>
+    <string name="audio_guide">Audio guía</string>
+    <string name="language">Idioma</string>
+    <string name="manual">Manual</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_point_map">Map</string>
+    <string name="title_activity_all_points_of_interest">AllPointsOfInterestActivity</string>
+    <!--Puntos de interés-->
+    <string name="sofia">Museo Reina Sofía</string>
+    <string name="banco">Banco de España</string>
+    <string name="ayuntamiento">Palacio de Comunicaciones (Ayuntamiento)</string>
+    <string name="linares">Palacio de Linares (Casa de América)</string>
+    <string name="ejercito">Cuartel General del Ejército</string>
+    <string name="chimenea">La casa de las 7 chimeneas</string>
+    <string name="iglesia">Iglesia de San José</string>
+    <string name="teatro">Teatro Español</string>
+    <string name="ana">Plaza de Santa Ana</string>
+    <string name="hotel">Hotel del Gato</string>
+    <string name="cabeza">Calle de la Cabeza</string>
+    <string name="palacio">Palacio de Santa Cruz</string>
+    <string name="mayor">Plaza Mayor</string>
+    <string name="correos">Real Casa de Correos</string>
+    <string name="real">Palacio Real</string>
+    <!-- FIN puntos de interés-->
+
+    <string name="guide_me">Llévame</string>
+    <string name="ipsum">Lorem fistrum sexuarl torpedo no puedor por la gloria de mi madre apetecan qué dise usteer ese pedazo de. A wan va usté muy cargadoo te va a hasé pupitaa apetecan pupita quietooor al ataquerl no puedor. Está la cosa muy malar qué dise usteer a gramenawer a peich. Qué dise usteer me cago en tus muelas a wan se calle ustée ese hombree mamaar a peich. Torpedo amatomaa torpedo me cago en tus muelas ese pedazo de no te digo trigo por no llamarte Rodrigor al ataquerl mamaar apetecan a gramenawer no te digo trigo por no llamarte Rodrigor. </string>
+    <string name="how_to_arrive">Llevame</string>
+    <string name="listen">Audio</string>
+
+    <!--GPS-->
+    <string name="gps_network_not_enabled">Red no activida</string>
+    <string name="open_location_settings">Abrir opciones de geolocalización</string>
+    <string name="Cancel">Cancelar</string>
+</resources>
