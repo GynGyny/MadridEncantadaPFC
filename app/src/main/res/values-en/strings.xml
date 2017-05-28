@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Madrid Charmed</string>
+    <string name="Cancel">Cancel</string>
+    <string name="ana">Saint\'s Anna square</string>
+    <string name="audio_guide">Audio Guide</string>
+    <string name="ayuntamiento">Communicactions Palace (Town hall)</string>
+    <string name="banco">Bank of Spain</string>
+    <string name="cabeza">La Cabeza Street</string>
+    <string name="chimenea">The house of the 7 fireplace</string>
+    <string name="correos">Real post house</string>
+    <string name="ejercito">Army headquartes</string>
+    <string name="gps_network_not_enabled">Network not ativated</string>
+    <string name="guide_me">Guide me</string>
+    <string name="hotel">Gato\'s hostel</string>
+    <string name="how_to_arrive">How to arrive</string>
+    <string name="iglesia">Saint Joseh church</string>
+    <string name="language">Language</string>
+    <string name="listen">Listen</string>
+    <string name="linares">Linares\' Place (American\'s house)</string>
+    <string name="manual">Manual</string>
+    <string name="map">Map</string>
+    <string name="mayor">Mayor square</string>
+    <string name="open_location_settings">Open geolocation options</string>
+    <string name="options">Options</string>
+    <string name="palacio">Santa Cruz\'s Palace</string>
+    <string name="points_of_interest">Points of interest</string>
+    <string name="real">Real Place</string>
+    <string name="sofia">Reina Sofia Museum</string>
+    <string name="teatro">Spanish theater</string>
+    <string name="title_activity_all_points_of_interest">AllPointsOfInterestActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_point_map">Map</string>
+</resources>
