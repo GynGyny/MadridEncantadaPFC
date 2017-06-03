@@ -64,10 +64,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(this, AllPointsOfInterestActivity.class);
         startActivity(intent);
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);  // TODO ANIMACIONES !!!
-
     }
 
     private void goToOptionsActivity() {
+        Intent intent = new Intent(this, OptionsActivity.class);
+        startActivity(intent);
     }
 
     private void goToAudioGuideActivity() {

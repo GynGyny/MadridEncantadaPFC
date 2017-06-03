@@ -37,4 +37,6 @@
     <string name="gps_network_not_enabled">Red no activada</string>
     <string name="open_location_settings">Abrir opciones de geolocalización</string>
     <string name="Cancel">Cancelar</string>
+
+
 </resources>

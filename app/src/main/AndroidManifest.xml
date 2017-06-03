@@ -27,12 +27,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.LugarDetailActivity"
             android:label="@string/sofia"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -61,7 +59,7 @@
             android:name=".activities.AllPointsOfInterestActivity"
             android:label="@string/points_of_interest"
             android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity android:name=".activities.OptionsActivity"></activity>
     </application>
 
 </manifest>
