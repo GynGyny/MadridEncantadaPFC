@@ -32,4 +32,6 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_point_map">Map</string>
+    <string name="spanish">Spanish</string>
+    <string name="english">English</string>
 </resources>

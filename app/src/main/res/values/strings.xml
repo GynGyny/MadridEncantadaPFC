@@ -38,5 +38,13 @@
     <string name="open_location_settings">Abrir opciones de geolocalización</string>
     <string name="Cancel">Cancelar</string>
 
+    <!--IDIOMAS-->
+    <string name="str_button">Cambiar idioma</string>
+    <string name="str_spanish">Español</string>
+    <string name="str_english">Inglés</string>
+    <string-array name="languages">
+        <item>@string/str_spanish</item>
+        <item>@string/str_english</item>
+    </string-array>
 
 </resources>
