@@ -1,7 +1,9 @@
 package geo.rutas.madrid.com.madridencantada.activities;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -52,22 +54,21 @@ public class OptionsActivity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
-                dialog.dismiss();
+                SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
                 switch (which) {
                     case 0:
-                        locale = new Locale("en");
-                        config.locale = locale;
+                        editor.putString(getString(R.string.language), "es");
                         break;
                     case 1:
-                        locale = new Locale("es");
-                        config.locale = locale;
+                        editor.putString(getString(R.string.language), "en");
                         break;
                 }
-                getResources().updateConfiguration(config, null);
+                editor.commit();
+                dialog.dismiss();
                 //Cambia el idioma de la aplicación
-                //Intent refresh = new Intent(MainActivity.this, MainActivity.class);
-                //startActivity(refresh);
+                Intent refresh = new Intent(OptionsActivity.this, MainActivity.class);
+                startActivity(refresh);
                 finish();
             }
 

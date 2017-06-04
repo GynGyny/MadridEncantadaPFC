@@ -34,4 +34,7 @@
     <string name="title_activity_point_map">Map</string>
     <string name="spanish">Spanish</string>
     <string name="english">English</string>
+    <string name="str_button">Change languaje</string>
+    <string name="str_english">English</string>
+    <string name="str_spanish">Spanish</string>
 </resources>

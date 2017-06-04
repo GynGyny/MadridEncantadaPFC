@@ -32,6 +32,7 @@
     <string name="ipsum" translatable="false">Lorem fistrum sexuarl torpedo no puedor por la gloria de mi madre apetecan qué dise usteer ese pedazo de. A wan va usté muy cargadoo te va a hasé pupitaa apetecan pupita quietooor al ataquerl no puedor. Está la cosa muy malar qué dise usteer a gramenawer a peich. Qué dise usteer me cago en tus muelas a wan se calle ustée ese hombree mamaar a peich. Torpedo amatomaa torpedo me cago en tus muelas ese pedazo de no te digo trigo por no llamarte Rodrigor al ataquerl mamaar apetecan a gramenawer no te digo trigo por no llamarte Rodrigor. </string>
     <string name="how_to_arrive">Cómo llegar</string>
     <string name="listen">Audio</string>
+    <string name="key_language">language</string>
 
     <!--GPS-->
     <string name="gps_network_not_enabled">Red no activada</string>
@@ -46,5 +47,7 @@
         <item>@string/str_spanish</item>
         <item>@string/str_english</item>
     </string-array>
+    <string name="english">Inglés</string>
+    <string name="spanish">español</string>
 
 </resources>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Madrid Encantada</string>
+    <string name="Cancel">Cancelar</string>
+    <string name="ana">Plaza de Santa Ana</string>
+    <string name="audio_guide">Audio guía</string>
+    <string name="ayuntamiento">Palacio de comunicaciones (Ayuntamiento)</string>
+    <string name="banco">Banco de España</string>
+    <string name="cabeza">Calle de La Cabeza</string>
+    <string name="chimenea">La casa de las 7 chimeneas</string>
+    <string name="correos">Real casa de correos</string>
+    <string name="ejercito">Cuartel general del ejército</string>
+    <string name="english">Inglés</string>
+    <string name="gps_network_not_enabled">Red no activada</string>
+    <string name="guide_me">Llévame</string>
+    <string name="hotel">Hotel del Gato</string>
+    <string name="how_to_arrive">Cómo llegar</string>
+    <string name="iglesia">Iglesia de San José</string>
+    <string name="language">Idioma</string>
+    <string name="linares">Palacio de Linares (Casa de América)</string>
+    <string name="listen">Audio</string>
+    <string name="manual">Manual</string>
+    <string name="map">Mapa</string>
+    <string name="mayor">Plaza Mayor</string>
+    <string name="open_location_settings">Abrir opciones de geolocalización</string>
+    <string name="options">Opciones</string>
+    <string name="palacio">Palacio de Santa Cruz</string>
+    <string name="points_of_interest">Puntos de interés</string>
+    <string name="real">Palacio Real</string>
+    <string name="sofia">Museo Reina Sofía</string>
+    <string name="spanish">español</string>
+    <string name="str_button">Cambiar idioma</string>
+    <string name="teatro">Teatro Español</string>
+    <string name="str_english">Inglés</string>
+    <string name="str_spanish">Español</string>
+    <string name="title_activity_all_points_of_interest">Puntos de interés</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_point_map">Mapa</string>
+</resources>
