@@ -31,6 +31,7 @@
     <string name="how_to_arrive">Cómo llegar</string>
     <string name="listen">Audio</string>
     <string name="key_language" translatable="false">language</string>
+    <string name="surf">Navega por los marcadores</string>
 
     <!--GPS-->
     <string name="gps_network_not_enabled">Red no activada</string>

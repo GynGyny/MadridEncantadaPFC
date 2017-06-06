@@ -37,4 +37,5 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_point_map">Mapa</string>
+    <string name="surf">Navega por los marcadores</string>
 </resources>

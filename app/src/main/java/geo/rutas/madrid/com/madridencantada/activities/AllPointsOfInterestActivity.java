@@ -92,4 +92,7 @@ public class AllPointsOfInterestActivity extends AppCompatActivity {
         intent.putExtra("longitud",lugarItem.getLatitudLongitud().longitude);
         startActivity(intent);
     }
+
+
+
 }

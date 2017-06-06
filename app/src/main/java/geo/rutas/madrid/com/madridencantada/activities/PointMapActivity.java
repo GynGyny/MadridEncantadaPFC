@@ -2,6 +2,7 @@ package geo.rutas.madrid.com.madridencantada.activities;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -10,7 +11,9 @@ import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.appindexing.Action;
@@ -34,7 +37,7 @@ import java.util.List;
 import geo.rutas.madrid.com.madridencantada.R;
 import models.Lugar;
 
-public class PointMapActivity extends FragmentActivity implements OnMapReadyCallback {
+public class PointMapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, View.OnClickListener {
 
     private GoogleMap mMap;
     /**
@@ -46,6 +49,7 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     private ImageView ivMiniMapPlace;
     private TextView tvMiniMapName;
     private List<Lugar> lugaresList;
+    private LinearLayout llDetailContainter;
 
     List<Marker> markers = new ArrayList<Marker>(); //Lista para los puntos del mapa
 
@@ -72,9 +76,10 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
 
         ivMiniMapPlace = (ImageView) findViewById(R.id.iv_MiniMapPlace);
         tvMiniMapName = (TextView) findViewById(R.id.tv_MiniMapName);
+        llDetailContainter = (LinearLayout) findViewById(R.id.linear_detail_container);
 
+        llDetailContainter.setOnClickListener(this);
         createData();
-
 
     }
 
@@ -91,14 +96,13 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setOnMarkerClickListener(this);
         for (int i = 0; i < lugaresList.size(); i++) {
             // Add a marker in -- and move the camera
             LatLng lugar = new LatLng(lugaresList.get(i).getLatitudLongitud().latitude, lugaresList.get(i).getLatitudLongitud().longitude);
             mMap.addMarker(new MarkerOptions().position(lugar).title(lugaresList.get(i).getNombre()));
-
             Marker marker = mMap.addMarker(new MarkerOptions().position(lugar)); //Llenamos el array con los datos
             markers.add(marker);
-
         }
        //markers.size(); //tamaño del array
         //para hacer zoom y que salgan todos los puntos del mapa
@@ -186,5 +190,23 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
 
     public void fillView() {   // pintar los datos en la vista
 
+    }
+
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        tvMiniMapName.setText(marker.getTitle());
+        for (int i = 0; i < lugaresList.size(); i++){   // Buscamos el lugar cuyo nombre coincida con el título del marcador
+            if (lugaresList.get(i).getNombre().equals(marker.getTitle())){
+                ivMiniMapPlace.setImageResource(lugaresList.get(i).getImagen());
+                break;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void onClick(View v) {
+        
     }
 }

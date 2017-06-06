@@ -17,6 +17,7 @@ public class LugarAdapter extends BaseAdapter {
 
     private Context context;
     private List<Lugar> lugares;
+    private ViewHolder holder;
 
 
     public LugarAdapter(Context context, List<Lugar> lugares) {
@@ -42,6 +43,7 @@ public class LugarAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        holder = new ViewHolder();
 
         View rowView = convertView;
 
@@ -53,14 +55,22 @@ public class LugarAdapter extends BaseAdapter {
         }
 
         // Set data into the view.
-        ImageView ivImagenLugar = (ImageView) rowView.findViewById(R.id.iv_lugar);
-        TextView tvTituloLugar = (TextView) rowView.findViewById(R.id.tv_nombre_item);
+        holder.ivImagenLugar = (ImageView) rowView.findViewById(R.id.iv_lugar);
+        holder.tvTituloLugar = (TextView) rowView.findViewById(R.id.tv_nombre_item);
 
         Lugar item = this.lugares.get(position);
-        tvTituloLugar.setText(item.getNombre());
-        ivImagenLugar.setImageResource(item.getImagen());
+        holder.tvTituloLugar.setText(item.getNombre());
+        holder.ivImagenLugar.setImageResource(item.getImagen());
 
         return rowView;
+    }
+
+
+
+    static class ViewHolder{
+        //economizar memoria respecto a los listview
+        ImageView ivImagenLugar;
+        TextView tvTituloLugar;
     }
 
 }

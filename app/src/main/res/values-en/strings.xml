@@ -37,4 +37,5 @@
     <string name="str_button">Change languaje</string>
     <string name="str_english">English</string>
     <string name="str_spanish">Spanish</string>
+    <string name="surf">Surf by the marker</string>
 </resources>

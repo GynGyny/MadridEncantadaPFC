@@ -5,14 +5,21 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="geo.rutas.madrid.com.madridencantada.activities.PointMapActivity" />
+        android:layout_above="@+id/linear_detail_container">
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="geo.rutas.madrid.com.madridencantada.activities.PointMapActivity" />
+    </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear_detail_container"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:layout_alignParentBottom="true"
@@ -28,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="45"
             android:scaleType="centerCrop"
-            android:src="@drawable/banco_de_espana" />
+            android:src="@drawable/madrid" />
 
         <TextView
             android:id="@+id/tv_MiniMapName"
@@ -37,7 +44,7 @@
             android:layout_weight="55"
             android:gravity="center_vertical"
             android:paddingLeft="20dp"
-            android:text="HOLA"
+            android:text="@string/surf"
             android:textColor="@android:color/white" />
     </LinearLayout>
 </RelativeLayout>
