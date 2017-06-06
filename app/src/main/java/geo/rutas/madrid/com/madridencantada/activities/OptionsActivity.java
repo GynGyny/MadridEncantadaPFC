@@ -58,10 +58,10 @@ public class OptionsActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 switch (which) {
                     case 0:
-                        editor.putString(getString(R.string.language), "es");
+                        editor.putString(getString(R.string.language_key_preferencias), "es");
                         break;
                     case 1:
-                        editor.putString(getString(R.string.language), "en");
+                        editor.putString(getString(R.string.language_key_preferencias), "en");
                         break;
                 }
                 editor.commit();

@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setAppLanguage() {
         SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-        String languageToLoad = sharedPreferences.getString(getString(R.string.language), "es") ;   // your language
+        String languageToLoad = sharedPreferences.getString(getString(R.string.language_key_preferencias), "es") ;   // your language
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();

@@ -5,7 +5,7 @@
     <string name="points_of_interest">Puntos de interés</string>
     <string name="options">Opciones</string>
     <string name="audio_guide">Audio guía</string>
-    <string name="language">Idioma</string>
+    <string name="language_key_preferencias" translatable="false">Idioma</string>  <!--  NO TRADUCIR -->
     <string name="manual">Manual</string>
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_point_map">Map</string>
@@ -24,15 +24,13 @@
     <string name="cabeza">Calle de La Cabeza</string>
     <string name="palacio">Palacio de Santa Cruz</string>
     <string name="mayor">Plaza Mayor</string>
-    <string name="correos">Real casa de correos</string>
-    <string name="real">Palacio Real</string>
     <!-- FIN puntos de interés-->
 
     <string name="guide_me">Llévame</string>
     <string name="ipsum" translatable="false">Lorem fistrum sexuarl torpedo no puedor por la gloria de mi madre apetecan qué dise usteer ese pedazo de. A wan va usté muy cargadoo te va a hasé pupitaa apetecan pupita quietooor al ataquerl no puedor. Está la cosa muy malar qué dise usteer a gramenawer a peich. Qué dise usteer me cago en tus muelas a wan se calle ustée ese hombree mamaar a peich. Torpedo amatomaa torpedo me cago en tus muelas ese pedazo de no te digo trigo por no llamarte Rodrigor al ataquerl mamaar apetecan a gramenawer no te digo trigo por no llamarte Rodrigor. </string>
     <string name="how_to_arrive">Cómo llegar</string>
     <string name="listen">Audio</string>
-    <string name="key_language">language</string>
+    <string name="key_language" translatable="false">language</string>
 
     <!--GPS-->
     <string name="gps_network_not_enabled">Red no activada</string>
@@ -49,5 +47,6 @@
     </string-array>
     <string name="english">Inglés</string>
     <string name="spanish">español</string>
+    <string name="language">Idioma</string>
 
 </resources>
