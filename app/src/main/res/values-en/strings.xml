@@ -6,7 +6,7 @@
     <string name="audio_guide">Audio Guide</string>
     <string name="ayuntamiento">Communicactions Palace (Town hall)</string>
     <string name="banco">Bank of Spain</string>
-    <string name="cabeza">La Cabeza Street</string>
+    <string name="cabeza">Head Street</string>
     <string name="chimenea">The house of the 7 fireplace</string>
     <string name="correos">Real post house</string>
     <string name="ejercito">Army headquartes</string>
@@ -37,5 +37,5 @@
     <string name="str_button">Change languaje</string>
     <string name="str_english">English</string>
     <string name="str_spanish">Spanish</string>
-    <string name="surf">Surf by the marker</string>
+    <string name="surf">Surf between points</string>
 </resources>

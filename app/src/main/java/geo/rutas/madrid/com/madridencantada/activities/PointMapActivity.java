@@ -168,7 +168,7 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
         Lugar teatro = new Lugar(getString(R.string.teatro), "Teatro Español", "Muchos", "Plaza Santa Ana", R.drawable.teatro_espanol_madrid, 40.414852, -3.699982);
         Lugar ana = new Lugar(getString(R.string.ana), "Plaza de Santa Ana", "No me acuerdo", "Plaza de Santa Ana", R.drawable.plaza_de_santa_ana, 40.414714, -3.700897);
         //Lugar hotel = new Lugar(getString(R.string.hotel), "Hotel del Gato", "Varios", "calle del gato", R.drawable.casa_de_las_7_chimeneas, 40.4202, -3.69666);
-        Lugar cabeza = new Lugar(getString(R.string.cabeza), "Calle de La Cabeza", "Cabeza", "Calle de La Cabeza", R.drawable.calle_de_la_cabeza, 40.411864, -3.703292);
+        Lugar cabeza = new Lugar(getString(R.string.cabeza), "Calle de La Cabeza", "Cabeza", "Calle de La Cabeza", R.drawable.cabeza1, 40.411864, -3.703292);
         Lugar palacio = new Lugar(getString(R.string.palacio), "Palacio de Santa Cruz", "palacios", "palacio", R.drawable.palacio_de_santa_cruz, 40.4147, -3.706031);
         Lugar mayor = new Lugar(getString(R.string.mayor), "Plaza Mayor", "Ajusticiados", "Plaza Mayor", R.drawable.plaza_mayor, 40.415556, -3.707222);
 
@@ -207,6 +207,6 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
 
     @Override
     public void onClick(View v) {
-        
+
     }
 }
