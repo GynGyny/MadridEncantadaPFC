@@ -34,6 +34,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+import application.MadridEncantadaApp;
 import geo.rutas.madrid.com.madridencantada.R;
 import models.Lugar;
 
@@ -48,8 +49,8 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
 
     private ImageView ivMiniMapPlace;
     private TextView tvMiniMapName;
-    private List<Lugar> lugaresList;
     private LinearLayout llDetailContainter;
+
 
     List<Marker> markers = new ArrayList<Marker>(); //Lista para los puntos del mapa
 
@@ -79,7 +80,7 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
         llDetailContainter = (LinearLayout) findViewById(R.id.linear_detail_container);
 
         llDetailContainter.setOnClickListener(this);
-        createData();
+
 
     }
 
@@ -97,6 +98,7 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMarkerClickListener(this);
+        List<Lugar> lugaresList = ((MadridEncantadaApp) getApplication()).getLugaresList();
         for (int i = 0; i < lugaresList.size(); i++) {
             // Add a marker in -- and move the camera
             LatLng lugar = new LatLng(lugaresList.get(i).getLatitudLongitud().latitude, lugaresList.get(i).getLatitudLongitud().longitude);
@@ -156,37 +158,6 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
         client.disconnect();
     }
 
-    public void createData() {
-        //Las imagenes se cambian por las del sitio, Reina Sofía, Banco España, etc
-        Lugar reinaSofia = new Lugar(getString(R.string.sofia),"Hospital", "Medium", "No lo sé",R.drawable.museo_reina_sofia, 40.407969, -3.694804);
-        Lugar bancoEspania = new Lugar(getString(R.string.banco),"Banco", "Monja", "A veces", R.drawable.banco_de_espana, 40.418740, -3.694601);
-        Lugar ayuntamiento = new Lugar(getString(R.string.ayuntamiento),"Palacio Comunicaciones", "Masacre", "Metro Banco España", R.drawable.ayuntamiento_de_madrid, 40.418633, -3.692476);
-        Lugar linares = new Lugar(getString(R.string.linares), "Casa de América", "Psicofonías", "Recoletos", R.drawable.casa_de_america, 40.419947, -3.692248);
-        Lugar ejercito = new Lugar(getString(R.string.ejercito), "Cuartel General del Ejército de Tierra", "Prim", "Recoletos", R.drawable.cuartel_general_ejercito, 40.421081, -3.694592);
-        Lugar chimeneas = new Lugar(getString(R.string.chimenea), "7 chimeneas", "chimeneas", "Recoletos", R.drawable.casa_de_las_7_chimeneas, 40.4202, -3.69666);
-        Lugar iglesia = new Lugar(getString(R.string.iglesia), "Iglesia de San José", "Baile", "Gran vía", R.drawable.iglesia_de_san_jose, 40.419068, -3.696654);
-        Lugar teatro = new Lugar(getString(R.string.teatro), "Teatro Español", "Muchos", "Plaza Santa Ana", R.drawable.teatro_espanol_madrid, 40.414852, -3.699982);
-        Lugar ana = new Lugar(getString(R.string.ana), "Plaza de Santa Ana", "No me acuerdo", "Plaza de Santa Ana", R.drawable.plaza_de_santa_ana, 40.414714, -3.700897);
-        //Lugar hotel = new Lugar(getString(R.string.hotel), "Hotel del Gato", "Varios", "calle del gato", R.drawable.casa_de_las_7_chimeneas, 40.4202, -3.69666);
-        Lugar cabeza = new Lugar(getString(R.string.cabeza), "Calle de La Cabeza", "Cabeza", "Calle de La Cabeza", R.drawable.cabeza1, 40.411864, -3.703292);
-        Lugar palacio = new Lugar(getString(R.string.palacio), "Palacio de Santa Cruz", "palacios", "palacio", R.drawable.palacio_de_santa_cruz, 40.4147, -3.706031);
-        Lugar mayor = new Lugar(getString(R.string.mayor), "Plaza Mayor", "Ajusticiados", "Plaza Mayor", R.drawable.plaza_mayor, 40.415556, -3.707222);
-
-        lugaresList = new ArrayList<Lugar>();
-        lugaresList.add(reinaSofia);
-        lugaresList.add(bancoEspania);
-        lugaresList.add(ayuntamiento);
-        lugaresList.add(linares);
-        lugaresList.add(ejercito);
-        lugaresList.add(chimeneas);
-        lugaresList.add(iglesia);
-        lugaresList.add(teatro);
-        lugaresList.add(ana);
-        //<string name="hotel">Hotel del Gato</string>
-        lugaresList.add(cabeza);
-        lugaresList.add(palacio);
-        lugaresList.add(mayor);
-    }
 
     public void fillView() {   // pintar los datos en la vista
 
@@ -195,6 +166,7 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+        List<Lugar> lugaresList = ((MadridEncantadaApp) getApplication()).getLugaresList();
         tvMiniMapName.setText(marker.getTitle());
         for (int i = 0; i < lugaresList.size(); i++){   // Buscamos el lugar cuyo nombre coincida con el título del marcador
             if (lugaresList.get(i).getNombre().equals(marker.getTitle())){
