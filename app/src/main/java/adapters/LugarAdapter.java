@@ -60,7 +60,7 @@ public class LugarAdapter extends BaseAdapter {
 
         Lugar item = this.lugares.get(position);
         holder.tvTituloLugar.setText(item.getNombre());
-        holder.ivImagenLugar.setImageResource(item.getImagen());
+        holder.ivImagenLugar.setImageResource(item.getImagenPequena());
 
         return rowView;
     }

@@ -10,44 +10,44 @@ public class Lugar {
 
     private String nombre;
     private String historia;
-    private String leyenda;
     private String informacion;
-    private int imagen;
+    private int imagenGrande;
+    private int imagenPequena;
     private LatLng latitudLongitud; //puntos cardinales
 
 
 
 
-    public Lugar(String nombre, String historia, String leyenda, String informacion, int imagen, double latitud, double longitud){
+    public Lugar(String nombre, String historia, String informacion, int imagenGrande, int imagenPequena, double latitud, double longitud){
         this.nombre = nombre;
         this.historia = historia;
-        this.leyenda = leyenda;
         this.informacion = informacion;
-        this.imagen = imagen;
+        this.imagenGrande = imagenGrande;
+        this.imagenPequena = imagenPequena;
         latitudLongitud = new LatLng(latitud, longitud);
     }
 
-    public int getImagen() {
-        return imagen;
+    public int getImagenGrande() {
+        return imagenGrande;
     }
 
-    public void setImagen(int imagen) {
-        this.imagen = imagen;
+    public void setImagenGrande(int imagenGrande) {
+        this.imagenGrande = imagenGrande;
     }
+    public int getImagenPequena() {
+        return imagenPequena;
+    }
+
+    public void setImagenPequena(int imagenPequena) {
+        this.imagenPequena = imagenPequena;
+    }
+
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getLeyenda() {
-        return leyenda;
-    }
-
-    public void setLeyenda(String leyenda) {
-        this.leyenda = leyenda;
     }
 
     public String getHistoria() {

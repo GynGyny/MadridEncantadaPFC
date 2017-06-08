@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -50,6 +51,7 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     private ImageView ivMiniMapPlace;
     private TextView tvMiniMapName;
     private LinearLayout llDetailContainter;
+    private boolean locationPermissionGranted;
 
 
     List<Marker> markers = new ArrayList<Marker>(); //Lista para los puntos del mapa
@@ -85,18 +87,17 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        // comprobamos
+        //permisos para acceder a la posición GPS
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "Acepta los permisos de geolocalización", Toast.LENGTH_LONG).show();
+        } else {
+            mMap.setMyLocationEnabled(true);
+            mMap.getUiSettings().setMyLocationButtonEnabled(true);
+        }
         mMap.setOnMarkerClickListener(this);
         List<Lugar> lugaresList = ((MadridEncantadaApp) getApplication()).getLugaresList();
         for (int i = 0; i < lugaresList.size(); i++) {
@@ -108,9 +109,11 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
         }
        //markers.size(); //tamaño del array
         //para hacer zoom y que salgan todos los puntos del mapa
-        animeteGoogleMapCamera();
+        animateGoogleMapCamera();
     }
-    public void animeteGoogleMapCamera (){
+
+
+    public void animateGoogleMapCamera (){
         //Android map v2 zoom para mostrar los marcadores
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         for (Marker marker : markers) {
@@ -121,6 +124,7 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
         mMap.moveCamera(cu);
     }
+
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -137,6 +141,8 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
                 .setActionStatus(Action.STATUS_TYPE_COMPLETED)
                 .build();
     }
+
+
 
     @Override
     public void onStart() {
@@ -170,7 +176,7 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
         tvMiniMapName.setText(marker.getTitle());
         for (int i = 0; i < lugaresList.size(); i++){   // Buscamos el lugar cuyo nombre coincida con el título del marcador
             if (lugaresList.get(i).getNombre().equals(marker.getTitle())){
-                ivMiniMapPlace.setImageResource(lugaresList.get(i).getImagen());
+                ivMiniMapPlace.setImageResource(lugaresList.get(i).getImagenGrande());
                 break;
             }
         }

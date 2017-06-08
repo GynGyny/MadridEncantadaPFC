@@ -31,19 +31,17 @@
                 android:id="@+id/tv_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ipsum" />
-
-            <TextView
-                android:id="@+id/tv_legend"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/ipsum" />
+                android:layout_margin="20dp"
+                android:text="@string/ipsum"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_information"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ipsum" />
+                android:layout_margin="20dp"
+                android:text="@string/ipsum"
+                android:textSize="16sp" />
         </LinearLayout>
     </ScrollView>
 
@@ -58,14 +56,22 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/listen" />
+            android:gravity="center"
+            android:background="@android:color/holo_green_dark"
+            android:drawableLeft="@android:drawable/ic_media_play"
+            android:text="@string/listen"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/button_go_to_map"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/guide_me" />
+            android:gravity="center"
+            android:background="@android:color/darker_gray"
+            android:drawableLeft="@android:drawable/ic_menu_mylocation"
+            android:text="@string/guide_me"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 

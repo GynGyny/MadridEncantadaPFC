@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import application.MadridEncantadaApp;
 import geo.rutas.madrid.com.madridencantada.R;
 import models.Lugar;
 
@@ -35,9 +36,8 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
     private Button btGoToAudio;
     private Button btGoToMap;
     private TextView tvHistory;
-    private TextView tvLegend;
     private TextView tvInfo;
-    private ImageView ivPlace;
+    private ImageView ivPlaceBig;
     private LocationManager mLocationManager;
     private Location localizacion;
 
@@ -55,9 +55,9 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
         btGoToAudio = (Button) findViewById(R.id.button_go_to_audio);
         btGoToMap = (Button) findViewById(R.id.button_go_to_map);
         tvHistory = (TextView) findViewById(R.id.tv_history);
-        tvLegend = (TextView) findViewById(R.id.tv_legend);
         tvInfo = (TextView) findViewById(R.id.tv_information);
-        ivPlace = (ImageView) findViewById(R.id.iv_place);
+        ivPlaceBig = (ImageView) findViewById(R.id.iv_place);
+
         getData();
         fillView();
         setOnClickListenerForButtons();
@@ -81,23 +81,15 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
     public void getData() {
         //lo que hemos enviado desde "AllPoint.." para que "pinte" los datos de un sitio concreto
         Intent intent = getIntent();
-
-        String nombre = intent.getStringExtra("nombre");
-        String historia = intent.getStringExtra("historia");
-        String leyenda = intent.getStringExtra("leyenda");
-        String informacion = intent.getStringExtra("informacion");
-        Integer refImagen = intent.getIntExtra("imagen", R.drawable.cast_album_art_placeholder);
-        Double latitud = intent.getDoubleExtra("latitud", 0.0);
-        Double longitud = intent.getDoubleExtra("longitud", 0.0);
-        lugar = new Lugar(nombre, historia, leyenda, informacion, refImagen, latitud, longitud);
+        Integer placesListIndex = intent.getIntExtra("LUGARINDEX", 0);
+        lugar = ((MadridEncantadaApp) getApplication()).getLugaresList().get(placesListIndex);
     }
 
     public void fillView() {   // pintar los datos en la vista
         getSupportActionBar().setTitle(lugar.getNombre());
         tvHistory.setText(lugar.getHistoria());
-        tvLegend.setText(lugar.getLeyenda());
         tvInfo.setText(lugar.getInformacion());
-        ivPlace.setImageResource(lugar.getImagen());
+        ivPlaceBig.setImageResource(lugar.getImagenGrande());
     }
 
     public void setOnClickListenerForButtons() {

@@ -8,9 +8,6 @@ import java.util.List;
 import geo.rutas.madrid.com.madridencantada.R;
 import models.Lugar;
 
-/**
- * Created by usuario on 07/06/2017.
- */
 
 public class MadridEncantadaApp extends Application{
 
@@ -20,9 +17,6 @@ public class MadridEncantadaApp extends Application{
     public MadridEncantadaApp() {
         super();
     }
-
-
-
 
     public List<Lugar> getLugaresList() {
         return lugaresList;

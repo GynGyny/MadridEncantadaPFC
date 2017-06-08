@@ -40,7 +40,7 @@ public class AllPointsOfInterestActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Lugar lugarItem = (Lugar) lvLugaresLista.getAdapter().getItem(position);
-                goToLugarDetailAcivity(lugarItem);
+                goToLugarDetailAcivity(position);
             }
         });
     }
@@ -48,16 +48,11 @@ public class AllPointsOfInterestActivity extends AppCompatActivity {
 
 
 
-    private void goToLugarDetailAcivity(Lugar lugarItem) {
+    private void goToLugarDetailAcivity(int index) {
         //lo que le pasamos del listado de los puntos de interés al lugar para que lo "pinte"
         Intent intent = new Intent(this, LugarDetailActivity.class);
-        intent.putExtra("nombre", lugarItem.getNombre());
-        intent.putExtra("historia", lugarItem.getHistoria());
-        intent.putExtra("leyenda", lugarItem.getLeyenda());
-        intent.putExtra("informacion", lugarItem.getInformacion());
-        intent.putExtra("imagen",lugarItem.getImagen());
-        intent.putExtra("latitud",lugarItem.getLatitudLongitud().latitude);
-        intent.putExtra("longitud",lugarItem.getLatitudLongitud().longitude);
+        intent.putExtra("LUGARINDEX", index);
+
         startActivity(intent);
     }
 
