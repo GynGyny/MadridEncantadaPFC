@@ -1,7 +1,12 @@
 package geo.rutas.madrid.com.madridencantada.activities;
 
+import android.media.MediaPlayer;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.view.PagerTitleStrip;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -20,10 +25,16 @@ import application.MadridEncantadaApp;
 import geo.rutas.madrid.com.madridencantada.R;
 import models.Lugar;
 
-public class AudioMapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class AudioMapsActivity extends FragmentActivity implements OnMapReadyCallback, View.OnClickListener {
 
     private GoogleMap mMap;
+    private ImageView ivRew;
+    private ImageView ivPlay;
+    private ImageView ivPause;
     List<Marker> markers = new ArrayList<Marker>(); //Lista para los puntos del mapa
+    private MediaPlayer mediaPlayer;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +44,12 @@ public class AudioMapsActivity extends FragmentActivity implements OnMapReadyCal
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        ivPause = (ImageView) findViewById(R.id.iv_media_pause);
+        ivPlay = (ImageView) findViewById(R.id.iv_media_play);
+        ivRew = (ImageView) findViewById(R.id.iv_media_rew);
+        addOnclickListener();
     }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -62,5 +78,57 @@ public class AudioMapsActivity extends FragmentActivity implements OnMapReadyCal
         int padding = 100; // Pixels para el desplazamiento de los bordes del mapa (zoom)
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
         mMap.moveCamera(cu);
+    }
+
+    private void addOnclickListener(){
+        ivRew.setOnClickListener(this);
+        ivPlay.setOnClickListener(this);
+        ivPause.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == ivPlay)
+            playAudio();
+        else if (v==ivPause)
+            pauseAudio();
+        else if (v==ivRew)
+            rewAudio();
+    }
+
+    public void playAudio (){
+        if (mediaPlayer==null){
+            mediaPlayer = MediaPlayer.create(this, R.raw.hooked);
+            mediaPlayer.start();
+        } else {
+            mediaPlayer.start();
+        }
+    }
+
+    public void pauseAudio (){
+        if (mediaPlayer.isPlaying())
+            mediaPlayer.pause();
+    }
+
+    public void rewAudio (){
+        
+        /**
+         * // When user click to "Rewind".
+         public void doRewind(View view)  {
+         int currentPosition = this.mediaPlayer.getCurrentPosition();
+         int duration = this.mediaPlayer.getDuration();
+         // 5 seconds.
+         int SUBTRACT_TIME = 5000;
+
+         if(currentPosition - SUBTRACT_TIME > 0 )  {
+         this.mediaPlayer.seekTo(currentPosition - SUBTRACT_TIME);
+         }
+         }
+         */
+        /**if (mediaPlayer.isPlaying()) {
+            mediaPlayer.stop();
+            mediaPlayer.reset();
+            playAudio();
+        }*/
     }
 }

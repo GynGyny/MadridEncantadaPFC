@@ -55,29 +55,38 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="10dp"
             android:id="@+id/ll_media_buttons_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_alignParentBottom="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
             android:paddingLeft="15dp"
             android:paddingRight="15dp">
 
-            <Button
+            <ImageView
+                android:id="@+id/iv_media_rew"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:drawable/ic_media_rew" />
+                android:layout_gravity="left"
+                android:src="@android:drawable/ic_media_rew" />
 
-            <Button
+            <ImageView
+                android:id="@+id/iv_media_play"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:drawable/ic_media_play" />
+                android:layout_gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:src="@android:drawable/ic_media_play" />
 
-            <Button
+            <ImageView
+                android:id="@+id/iv_media_pause"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:drawable/ic_media_pause" />
+                android:layout_gravity="right"
+                android:src="@android:drawable/ic_media_pause" />
 
         </LinearLayout>
     </RelativeLayout>

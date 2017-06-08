@@ -49,9 +49,9 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_lugar_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_lugar_detail);
         setSupportActionBar(toolbar);
-        //asociamos nuestras variables a las de la vista XML
-        //le damos forma de lo que queremos
-        //enlazamos el "mundo real" con el "mundo de Tron"
+        /**1)asociamos nuestras variables a las de la vista XML
+        2)le damos forma de lo que queremos
+        3)enlazamos el "mundo real" con el "mundo de Tron"*/
         btGoToAudio = (Button) findViewById(R.id.button_go_to_audio);
         btGoToMap = (Button) findViewById(R.id.button_go_to_map);
         tvHistory = (TextView) findViewById(R.id.tv_history);
