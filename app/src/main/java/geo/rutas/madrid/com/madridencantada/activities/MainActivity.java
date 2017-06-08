@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setAppLanguage() {
         SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-        String languageToLoad = sharedPreferences.getString(getString(R.string.language_key_preferencias), "es") ;   // your language
+        String languageToLoad = sharedPreferences.getString(getString(R.string.language_key_preferencias), "en") ;   // your language
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v==btOptions){
             goToOptionsActivity();
         } else{
-            goToAudioGuideActivity();
+            goToAudioActivity();
         }
     }
 
@@ -94,7 +94,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);  // TODO ANIMACIONES !!!
     }
 
-    private void goToAudioGuideActivity() {
+    private void goToAudioActivity() {
+        Intent intent = new Intent(this, AudioMapsActivity.class);
+        startActivity(intent);
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);  // TODO ANIMACIONES !!!
     }
 
 

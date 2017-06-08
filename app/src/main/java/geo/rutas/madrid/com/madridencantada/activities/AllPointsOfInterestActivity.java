@@ -18,9 +18,7 @@ import models.Lugar;
 
 public class AllPointsOfInterestActivity extends AppCompatActivity {
 
-
     private ListView lvLugaresLista;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +43,6 @@ public class AllPointsOfInterestActivity extends AppCompatActivity {
         });
     }
 
-
-
-
     private void goToLugarDetailAcivity(int index) {
         //lo que le pasamos del listado de los puntos de interés al lugar para que lo "pinte"
         Intent intent = new Intent(this, LugarDetailActivity.class);
@@ -55,7 +50,4 @@ public class AllPointsOfInterestActivity extends AppCompatActivity {
 
         startActivity(intent);
     }
-
-
-
 }

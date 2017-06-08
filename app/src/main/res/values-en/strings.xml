@@ -8,7 +8,6 @@
     <string name="banco">Bank of Spain</string>
     <string name="cabeza">Head Street</string>
     <string name="chimenea">The house of the 7 fireplace</string>
-    <string name="correos">Real post house</string>
     <string name="ejercito">Army headquartes</string>
     <string name="gps_network_not_enabled">Network not ativated</string>
     <string name="guide_me">Guide me</string>
@@ -25,7 +24,6 @@
     <string name="options">Options</string>
     <string name="palacio">Santa Cruz\'s Palace</string>
     <string name="points_of_interest">Points of interest</string>
-    <string name="real">Real Place</string>
     <string name="sofia">Reina Sofia Museum</string>
     <string name="teatro">Spanish theater</string>
     <string name="title_activity_all_points_of_interest">AllPointsOfInterestActivity</string>
@@ -38,4 +36,8 @@
     <string name="str_english">English</string>
     <string name="str_spanish">Spanish</string>
     <string name="surf">Surf between points</string>
+    <string name="history">History</string>
+    <string name="information">Information</string>
+    <string name="title_activity_audio_maps">Audio Map</string>
+    <string name="explain_audio"></string>
 </resources>

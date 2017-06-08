@@ -32,6 +32,9 @@
     <string name="listen">Audio</string>
     <string name="key_language" translatable="false">language</string>
     <string name="surf">Navega por los marcadores</string>
+    <string name="explain_audio">El audio se reproducirá cuando te acerques al punto</string>
+    <string name="history">Historia</string>
+    <string name="information">Información</string>
 
     <!--GPS-->
     <string name="gps_network_not_enabled">Red no activada</string>
@@ -55,4 +58,5 @@
         Desde entonces, grandes personalidades de la Historia de España (los generales Espartero y Prim, Manuel Azaña, Miguel Primo de Rivera...) se han alojado entre sus paredes con desigual fortuna.\n\n
         La primera de las historias en torno a este edificio nos habla de un guardia civil que se habría quitado la vida cerca de las Escaleras del Honor. Desde entonces no son pocas las voces de soldados que dicen haber escuchado pasos sin dueño, sentido cambios bruscos de temperatura e incluso se habla de una puerta blindada que se ha abierto sin que nadie accionase su mecanismo.\n\n
         Hablábamos antes de la estancia de personalidades en el palacio. Para el general Prim esta sería su última morada puesto que el 30 de diciembre de 1870 el militar moriría en extrañas circunstancias y aún a día de hoy se puede percibir en sus aposentos una presencia inquisidora que parece querer urgirnos a descubrir la verdad sobre su muerte.\n</string>
+    <string name="title_activity_audio_maps">Audio Map</string>
 </resources>

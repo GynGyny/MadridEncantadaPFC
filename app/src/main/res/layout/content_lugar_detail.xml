@@ -25,14 +25,14 @@
                 android:layout_height="300dp"
                 android:layout_gravity="top"
                 android:scaleType="centerInside"
-                android:src="@drawable/museo_reina_sofia" />
+                android:src="@drawable/madrid" />
 
             <TextView
                 android:id="@+id/tv_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="@string/ipsum"
+                android:text="@string/history"
                 android:textSize="16sp" />
 
             <TextView
@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="@string/ipsum"
+                android:text="@string/information"
                 android:textSize="16sp" />
         </LinearLayout>
     </ScrollView>

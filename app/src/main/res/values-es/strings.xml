@@ -8,7 +8,6 @@
     <string name="banco">Banco de España</string>
     <string name="cabeza">Calle de La Cabeza</string>
     <string name="chimenea">La casa de las 7 chimeneas</string>
-    <string name="correos">Real casa de correos</string>
     <string name="ejercito">Cuartel general del ejército</string>
     <string name="english">Inglés</string>
     <string name="gps_network_not_enabled">Red no activada</string>
@@ -26,7 +25,6 @@
     <string name="options">Opciones</string>
     <string name="palacio">Palacio de Santa Cruz</string>
     <string name="points_of_interest">Puntos de interés</string>
-    <string name="real">Palacio Real</string>
     <string name="sofia">Museo Reina Sofía</string>
     <string name="spanish">español</string>
     <string name="str_button">Cambiar idioma</string>
@@ -38,4 +36,8 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_point_map">Mapa</string>
     <string name="surf">Navega por los marcadores</string>
+    <string name="explain_audio">El audio se reproducirá cuando te acerques al punto</string>
+    <string name="history">Historia</string>
+    <string name="information">Información</string>
+    <string name="title_activity_audio_maps">Audio en el mapa</string>
 </resources>

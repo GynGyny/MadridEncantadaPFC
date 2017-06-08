@@ -52,6 +52,7 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     private TextView tvMiniMapName;
     private LinearLayout llDetailContainter;
     private boolean locationPermissionGranted;
+    private Integer currentPlaceIndex = null; //guarda la posición del array correspondiente al lugar que se está mostrando
 
 
     List<Marker> markers = new ArrayList<Marker>(); //Lista para los puntos del mapa
@@ -107,12 +108,9 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
             Marker marker = mMap.addMarker(new MarkerOptions().position(lugar)); //Llenamos el array con los datos
             markers.add(marker);
         }
-       //markers.size(); //tamaño del array
         //para hacer zoom y que salgan todos los puntos del mapa
         animateGoogleMapCamera();
     }
-
-
     public void animateGoogleMapCamera (){
         //Android map v2 zoom para mostrar los marcadores
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
@@ -165,11 +163,6 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     }
 
 
-    public void fillView() {   // pintar los datos en la vista
-
-    }
-
-
     @Override
     public boolean onMarkerClick(Marker marker) {
         List<Lugar> lugaresList = ((MadridEncantadaApp) getApplication()).getLugaresList();
@@ -177,14 +170,34 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
         for (int i = 0; i < lugaresList.size(); i++){   // Buscamos el lugar cuyo nombre coincida con el título del marcador
             if (lugaresList.get(i).getNombre().equals(marker.getTitle())){
                 ivMiniMapPlace.setImageResource(lugaresList.get(i).getImagenGrande());
+                currentPlaceIndex=i;
                 break;
             }
         }
         return false;
     }
 
+
+
     @Override
     public void onClick(View v) {
-
+        if (currentPlaceIndex!=null) {
+            Intent intent = new Intent(this, LugarDetailActivity.class);
+            intent.putExtra("LUGARINDEX", currentPlaceIndex);
+            startActivity(intent);
+            //overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);  // TODO ANIMACIONES !!!
+        } else{
+            Toast.makeText(this,getString(R.string.surf),Toast.LENGTH_SHORT).show();
+        }
     }
+/**
+ *  Intent intent = new Intent(this, LugarDetailActivity.class);
+ intent.putExtra("LUGARINDEX", index);
+
+ startActivity(intent);
+ * Intent intent = getIntent();
+ Integer placesListIndex = intent.getIntExtra("LUGARINDEX", 0);
+ lugar = ((MadridEncantadaApp) getApplication()).getLugaresList().get(placesListIndex);
+ */
+
 }
