@@ -14,17 +14,21 @@ public class Lugar {
     private int imagenGrande;
     private int imagenPequena;
     private LatLng latitudLongitud; //puntos cardinales
+    private int mp3IdEng;
+    private int mp3IdSpa;
 
 
 
 
-    public Lugar(String nombre, String historia, String informacion, int imagenGrande, int imagenPequena, double latitud, double longitud){
+    public Lugar(String nombre, String historia, String informacion, int imagenGrande, int imagenPequena, double latitud, double longitud, int mp3IdEng, int mp3IdSpa){
         this.nombre = nombre;
         this.historia = historia;
         this.informacion = informacion;
         this.imagenGrande = imagenGrande;
         this.imagenPequena = imagenPequena;
         latitudLongitud = new LatLng(latitud, longitud);
+        this.mp3IdEng = mp3IdEng;
+        this.mp3IdSpa = mp3IdSpa;
     }
 
     public int getImagenGrande() {
@@ -72,5 +76,20 @@ public class Lugar {
 
     public void setLatitudLongitud(LatLng latitudLongitud) {
         this.latitudLongitud = latitudLongitud;
+    }
+    public int getMp3IdEng() {
+        return mp3IdEng;
+    }
+
+    public void setMp3IdEng(int mp3IdEng) {
+        this.mp3IdEng = mp3IdEng;
+    }
+
+    public int getMp3IdSpa() {
+        return mp3IdSpa;
+    }
+
+    public void setMp3IdSpa(int mp3IdSpa) {
+        this.mp3IdSpa = mp3IdSpa;
     }
 }

@@ -53,13 +53,15 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
     private TextView tvMiniMapName;
     List<Marker> markers = new ArrayList<Marker>(); //Lista para los puntos del mapa
     private MediaPlayer mediaPlayer;
+    List<Lugar> lugaresList;
+    List<Location> locationList;
 
     Location mLocation;
     GoogleApiClient mGoogleApiClient;
 
     private LocationRequest mLocationRequest;
-    private long UPDATE_INTERVAL = 15000;  /* 15 secs */
-    private long FASTEST_INTERVAL = 5000; /* 5 secs */
+    private long UPDATE_INTERVAL = 20000;  /* 20 secs */
+    private long FASTEST_INTERVAL = 10000; /* 10 secs */
 
     private static double ACTION_RADIUS = 15.0;
 
@@ -78,6 +80,9 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
         ivRew = (ImageView) findViewById(R.id.iv_media_rew);
         tvMiniMapName = (TextView) findViewById(R.id.tv_MiniMapName);
         addOnclickListeners();
+        lugaresList = ((MadridEncantadaApp) getApplication()).getLugaresList();
+        copyPlacesToLocationList();
+
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(LocationServices.API)
@@ -92,7 +97,6 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         // comprobamos
-        List<Lugar> lugaresList = ((MadridEncantadaApp) getApplication()).getLugaresList();
         for (int i = 0; i < lugaresList.size(); i++) {
             // Add a marker in -- and move the camera
             LatLng lugar = new LatLng(lugaresList.get(i).getLatitudLongitud().latitude, lugaresList.get(i).getLatitudLongitud().longitude);
@@ -100,16 +104,13 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
             Marker marker = mMap.addMarker(new MarkerOptions().position(lugar)); //Llenamos el array con los datos
             markers.add(marker);
         }
-        //markers.size(); //tamaño del array
-        //para hacer zoom y que salgan todos los puntos del mapa
-        animateGoogleMapCamera();
+        animateGoogleMapCamera();        //para hacer zoom y que salgan todos los puntos del mapa
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(this, "Acepta los permisos de geolocalización", Toast.LENGTH_LONG).show();
         } else {
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(true);
         }
-        mMap.setMyLocationEnabled(true);
     }
 
 
@@ -127,7 +128,7 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
 
-
+    
     private void addOnclickListeners(){
         ivRew.setOnClickListener(this);
         ivPlay.setOnClickListener(this);
@@ -263,7 +264,44 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
     public void onLocationChanged(Location location) {   // CALLBACK PARA LOS CAMBIOS DE UBICACIÓN
         if(location!=null)
             tvMiniMapName.setText("Latitude : "+location.getLatitude()+" , Longitude : "+location.getLongitude());
+        for (int i = 0; i<locationList.size(); i++){
+            if (location.distanceTo(locationList.get(i))<=ACTION_RADIUS){
+                playMp3(lugaresList.get(i).getMp3IdSpa());
+                Toast.makeText(this,"ESTÁS DENTRO TARUGA", Toast.LENGTH_LONG).show();
+                break;
+            }
+        }
     }
+
+
+    public void copyPlacesToLocationList (){
+        Location loc;
+        locationList = new ArrayList<Location>();
+        for (int i=0; i<lugaresList.size(); i++){
+            loc = new Location("");
+            loc.setLatitude(lugaresList.get(i).getLatitudLongitud().latitude);
+            loc.setLongitude(lugaresList.get(i).getLatitudLongitud().longitude);
+            locationList.add(loc);
+        }
+    }
+
+    public void  playMp3 (int mp3Id){
+        if (mediaPlayer==null)
+            mediaPlayer = MediaPlayer.create(this, mp3Id);
+
+        if (!mediaPlayer.isPlaying()) {
+            mediaPlayer.start();
+        }
+    }
+
+  /*  public void playAudio (){
+        if (mediaPlayer==null){
+            mediaPlayer = MediaPlayer.create(this, R.raw.bach);
+            mediaPlayer.start();
+        } else {
+            mediaPlayer.start();
+        }
+    }*/
 
 }
 
