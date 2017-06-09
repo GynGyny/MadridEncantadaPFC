@@ -7,6 +7,7 @@ import android.support.v4.view.PagerTitleStrip;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -33,7 +34,8 @@ public class AudioMapsActivity extends FragmentActivity implements OnMapReadyCal
     private ImageView ivPause;
     List<Marker> markers = new ArrayList<Marker>(); //Lista para los puntos del mapa
     private MediaPlayer mediaPlayer;
-
+    private  int backwardTime = 5000;
+    private double startTime = 0;
 
 
     @Override
@@ -103,6 +105,7 @@ public class AudioMapsActivity extends FragmentActivity implements OnMapReadyCal
         } else {
             mediaPlayer.start();
         }
+        startTime = mediaPlayer.getCurrentPosition();
     }
 
     public void pauseAudio (){
@@ -111,7 +114,17 @@ public class AudioMapsActivity extends FragmentActivity implements OnMapReadyCal
     }
 
     public void rewAudio (){
-        
+
+        int temp = (int)startTime;
+
+        if((temp-backwardTime)>0){
+            startTime = startTime - backwardTime;
+            mediaPlayer.seekTo((int) startTime);
+            Toast.makeText(getApplicationContext(),"You have Jumped backward 5 seconds",Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(getApplicationContext(),"Cannot jump backward 5 seconds",Toast.LENGTH_SHORT).show();
+        }
+    }
         /**
          * // When user click to "Rewind".
          public void doRewind(View view)  {
@@ -130,5 +143,5 @@ public class AudioMapsActivity extends FragmentActivity implements OnMapReadyCal
             mediaPlayer.reset();
             playAudio();
         }*/
-    }
+
 }
