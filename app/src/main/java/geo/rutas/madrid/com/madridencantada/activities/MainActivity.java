@@ -1,10 +1,14 @@
 package geo.rutas.madrid.com.madridencantada.activities;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -24,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btPointOfInterest;
     private Button btOptions;
     private Button btAudioGuide;
+
+    private static String SPANISH = "es";
 
 
 
@@ -45,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setAppLanguage() {
         SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
-        String languageToLoad = sharedPreferences.getString(getString(R.string.language_key_preferencias), "en") ;   // your language
+        String languageToLoad = sharedPreferences.getString(getString(R.string.language_key_preferencias), SPANISH) ;   // your language
         Locale locale = new Locale(languageToLoad);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -135,5 +141,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lugaresList.add(mayor);
         return lugaresList;
     }
+
+
+
 
 }

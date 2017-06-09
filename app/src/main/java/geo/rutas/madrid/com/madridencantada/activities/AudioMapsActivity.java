@@ -1,6 +1,9 @@
 package geo.rutas.madrid.com.madridencantada.activities;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.view.PagerTitleStrip;
@@ -34,7 +37,7 @@ public class AudioMapsActivity extends FragmentActivity implements OnMapReadyCal
     private ImageView ivPause;
     List<Marker> markers = new ArrayList<Marker>(); //Lista para los puntos del mapa
     private MediaPlayer mediaPlayer;
-    private  int backwardTime = 5000;
+    private int backwardTime = 5000;
     private double startTime = 0;
 
 
@@ -68,6 +71,13 @@ public class AudioMapsActivity extends FragmentActivity implements OnMapReadyCal
         //markers.size(); //tamaño del array
         //para hacer zoom y que salgan todos los puntos del mapa
         animateGoogleMapCamera();
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "Acepta los permisos de geolocalización", Toast.LENGTH_LONG).show();
+        } else {
+            mMap.setMyLocationEnabled(true);
+            mMap.getUiSettings().setMyLocationButtonEnabled(true);
+        }
+        mMap.setMyLocationEnabled(true);
     }
 
     private void animateGoogleMapCamera() {
@@ -100,12 +110,13 @@ public class AudioMapsActivity extends FragmentActivity implements OnMapReadyCal
 
     public void playAudio (){
         if (mediaPlayer==null){
-            mediaPlayer = MediaPlayer.create(this, R.raw.hooked);
+            mediaPlayer = MediaPlayer.create(this, R.raw.bach);
             mediaPlayer.start();
         } else {
             mediaPlayer.start();
         }
         startTime = mediaPlayer.getCurrentPosition();
+
     }
 
     public void pauseAudio (){
@@ -114,16 +125,8 @@ public class AudioMapsActivity extends FragmentActivity implements OnMapReadyCal
     }
 
     public void rewAudio (){
-
-        int temp = (int)startTime;
-
-        if((temp-backwardTime)>0){
-            startTime = startTime - backwardTime;
-            mediaPlayer.seekTo((int) startTime);
-            Toast.makeText(getApplicationContext(),"You have Jumped backward 5 seconds",Toast.LENGTH_SHORT).show();
-        }else{
-            Toast.makeText(getApplicationContext(),"Cannot jump backward 5 seconds",Toast.LENGTH_SHORT).show();
-        }
+        mediaPlayer.seekTo(0);
+        mediaPlayer.pause();
     }
         /**
          * // When user click to "Rewind".
@@ -144,4 +147,13 @@ public class AudioMapsActivity extends FragmentActivity implements OnMapReadyCal
             playAudio();
         }*/
 
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mediaPlayer!=null) {
+            mediaPlayer.stop();
+            mediaPlayer.reset();
+        }
+    }
 }
