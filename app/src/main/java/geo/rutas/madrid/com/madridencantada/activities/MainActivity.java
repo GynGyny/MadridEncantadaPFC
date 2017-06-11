@@ -113,18 +113,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //Las imagenes se cambian por las del sitio, Reina Sofía, Banco España, etc
         Lugar reinaSofia = new Lugar(getString(R.string.sofia),"Hospital", "No lo sé",R.drawable.museo_reina_sofia, R.drawable.pq_museo_reina_sofia,  40.407969, -3.694804,R.raw.bach,R.raw.hooked);
-        Lugar bancoEspania = new Lugar(getString(R.string.banco),"Banco", "A veces", R.drawable.banco_de_espana, R.drawable.pq_banco_de_espana, 40.418740, -3.694601,R.raw.bach,R.raw.hooked);
-        Lugar ayuntamiento = new Lugar(getString(R.string.ayuntamiento),"Palacio Comunicaciones", "Metro Banco España", R.drawable.ayuntamiento_de_madrid, R.drawable.pq_ayuntamiento_de_madrid, 40.418633, -3.692476,R.raw.bach,R.raw.hooked);
-        Lugar linares = new Lugar(getString(R.string.linares), "Casa de América", "Recoletos", R.drawable.casa_de_america, R.drawable.pq_casa_de_america, 40.419947, -3.692248,R.raw.bach,R.raw.hooked);
-        Lugar ejercito = new Lugar(getString(R.string.ejercito), getString(R.string.historia_ejercito), "Recoletos", R.drawable.cuartel_general_ejercito, R.drawable.pq_cuartel_general_ejercito, 40.421081, -3.694592,R.raw.bach,R.raw.es_ejercito);
+        Lugar bancoEspania = new Lugar(getString(R.string.banco),"Banco", "A veces", R.drawable.banco_de_espana, R.drawable.pq_banco_de_espana, 40.418974, -3.693961,R.raw.bach,R.raw.hooked);
+        Lugar ayuntamiento = new Lugar(getString(R.string.ayuntamiento),"Palacio Comunicaciones", "Metro Banco España", R.drawable.ayuntamiento_de_madrid, R.drawable.pq_ayuntamiento_de_madrid, 40.419051, -3.692264,R.raw.bach,R.raw.hooked);
+        Lugar linares = new Lugar(getString(R.string.linares), "Casa de América", "Recoletos", R.drawable.casa_de_america, R.drawable.pq_casa_de_america, 40.419700, -3.692346,R.raw.bach,R.raw.hooked);
+        Lugar ejercito = new Lugar(getString(R.string.ejercito), getString(R.string.historia_ejercito),getString(R.string.information_ejercito) , R.drawable.cuartel_general_ejercito, R.drawable.pq_cuartel_general_ejercito, 40.419404, -3.694347,R.raw.bach,R.raw.es_ejercito);
         Lugar chimeneas = new Lugar(getString(R.string.chimenea), "7 chimeneas", "Recoletos", R.drawable.casa_de_las_7_chimeneas, R.drawable.pq_casa_de_las_7_chimeneas, 40.4202, -3.69666,R.raw.bach,R.raw.hooked);
         Lugar iglesia = new Lugar(getString(R.string.iglesia), "Iglesia de San José", "Gran vía", R.drawable.iglesia_de_san_jose, R.drawable.pq_iglesia_de_san_jose, 40.419068, -3.696654,R.raw.bach,R.raw.hooked);
         Lugar teatro = new Lugar(getString(R.string.teatro), "Teatro Español", "Plaza Santa Ana", R.drawable.teatro_espanol_madrid, R.drawable.pq_teatro_espanol_madrid, 40.414852, -3.699982,R.raw.bach,R.raw.hooked);
         Lugar ana = new Lugar(getString(R.string.ana), "Plaza de Santa Ana", "Plaza de Santa Ana", R.drawable.plaza_de_santa_ana, R.drawable.pq_plaza_de_santa_ana, 40.414714, -3.700897,R.raw.bach,R.raw.hooked);
-        //Lugar hotel = new Lugar(getString(R.string.hotel), "Hotel del Gato", "calle del gato", R.drawable.casa_de_las_7_chimeneas, 40.4202, -3.69666);
         Lugar cabeza = new Lugar(getString(R.string.cabeza), "Calle de La Cabeza", "Calle de La Cabeza", R.drawable.cabeza1, R.drawable.pq_cabeza1, 40.411864, -3.703292,R.raw.bach,R.raw.hooked);
         Lugar palacio = new Lugar(getString(R.string.palacio), "Palacio de Santa Cruz", "palacio", R.drawable.palacio_de_santa_cruz, R.drawable.pq_palacio_de_santa_cruz, 40.4147, -3.706031,R.raw.bach,R.raw.hooked);
-        Lugar mayor = new Lugar(getString(R.string.mayor), "Plaza Mayor", "Plaza Mayor", R.drawable.plaza_mayor, R.drawable.pq_plaza_mayor, 40.415556, -3.707222,R.raw.bach,R.raw.hooked);
+        Lugar mayor = new Lugar(getString(R.string.mayor), "Plaza Mayor", "Plaza Mayor", R.drawable.plaza_mayor, R.drawable.pq_plaza_mayor, 40.415512, -3.707402,R.raw.bach,R.raw.hooked);
 
        // Lugar universidad = new Lugar("UNIVERSIDAD","1","2", R.drawable.plaza_mayor, R.drawable.pq_plaza_mayor, 40.341328, -3.845749,R.raw.bach,R.raw.audios_cortos);
         //Lugar retamas = new Lugar("RETAMAS","1","2", R.drawable.plaza_mayor, R.drawable.pq_plaza_mayor, 40.3407826,-3.845783,R.raw.bach,R.raw.es_ejercito);
@@ -138,7 +137,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lugaresList.add(iglesia);
         lugaresList.add(teatro);
         lugaresList.add(ana);
-        //<string name="hotel">Hotel del Gato</string>
         lugaresList.add(cabeza);
         lugaresList.add(palacio);
         lugaresList.add(mayor);

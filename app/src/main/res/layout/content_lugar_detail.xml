@@ -32,14 +32,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:background="@color/pesto_very_light"
+                android:background="@color/grey_very_light"
                 android:elevation="2dp"
                 android:gravity="center"
                 android:orientation="horizontal"
-                android:paddingBottom="15dp"
+                android:paddingBottom="1dp"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                >
+                android:paddingTop="0dp">
 
                 <ImageView
                     android:id="@+id/iv_media_rew"
@@ -75,18 +75,28 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/grey_very_light" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="27dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="5dp"
                 android:drawableLeft="@android:drawable/arrow_down_float"
-                android:drawablePadding="7dp"
+                android:drawablePadding="5dp"
                 android:text="@string/information"
                 android:textColor="@color/greyMedium"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/grey_very_light" />
 
             <TextView
                 android:id="@+id/tv_information"
@@ -96,18 +106,28 @@
                 android:text="@string/information"
                 android:textSize="16sp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/grey_very_light" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="27dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="5dp"
                 android:drawableLeft="@android:drawable/arrow_down_float"
                 android:drawablePadding="7dp"
                 android:text="@string/history"
                 android:textColor="@color/greyMedium"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
+
+           <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/grey_very_light" />
 
             <TextView
                 android:id="@+id/tv_history"
@@ -127,7 +147,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@color/pesto_medium"
         android:drawableLeft="@android:drawable/ic_menu_mylocation"
         android:gravity="center"
         android:text="@string/guide_me"

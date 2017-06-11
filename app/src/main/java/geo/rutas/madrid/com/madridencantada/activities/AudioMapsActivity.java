@@ -120,7 +120,7 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
         }
         animateGoogleMapCamera();        //para hacer zoom y que salgan todos los puntos del mapa
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(this, "Acepta los permisos de geolocalización", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.gps_permitions), Toast.LENGTH_LONG).show();
         } else {
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(true);
@@ -209,10 +209,11 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
             return;
         }
         mLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if(mLocation!=null)
+        /*if(mLocation!=null)
         {
-            tvMiniMapName.setText("Latitude : "+mLocation.getLatitude()+" , Longitude : "+mLocation.getLongitude());
-        }
+            //tvMiniMapName.setText(getString(R.string.gps_near));
+            //tvMiniMapName.setText(getString(R.string.gps_inside)+ lugaresList.get(i).getNombre());
+        }*/
         startLocationUpdates();
     }
 
@@ -263,7 +264,7 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
                         playMp3(lugaresList.get(i).getMp3IdEng());
                     }
                 }
-                tvMiniMapName.setText("ESTÁS DENTRO DE " + lugaresList.get(i).getNombre());
+                tvMiniMapName.setText(getString(R.string.gps_inside)+ " " + lugaresList.get(i).getNombre());
                 break;
             }
         }

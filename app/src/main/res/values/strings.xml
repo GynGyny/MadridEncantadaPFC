@@ -10,6 +10,11 @@
     <string name="title_activity_map">MapActivity</string>
     <string name="title_activity_point_map">Map</string>
     <string name="title_activity_all_points_of_interest">AllPointsOfInterestActivity</string>
+    <string name="title_activity_audio_maps">Audio Map</string>
+    <string name="welcome">MADRID ENCANTADA.</string>
+    <string name="welcome2">Una aplicación de fantasmas</string>
+
+
     <!--Puntos de interés-->
     <string name="sofia">Museo Reina Sofía</string>
     <string name="banco">Banco de España</string>
@@ -40,6 +45,9 @@
     <string name="gps_network_not_enabled">Red no activada</string>
     <string name="open_location_settings">Abrir opciones de geolocalización</string>
     <string name="Cancel">Cancelar</string>
+    <string name="gps_permitions">Acepta los permisos de geolocalización</string>
+    <string name="gps_near"></string>
+    <string name="gps_inside">ESTÁS DENTRO DE </string>
 
     <!--IDIOMAS-->
     <string name="str_button">Cambiar idioma</string>
@@ -55,8 +63,9 @@
 
     <!-- TEXTOS -->
     <string name="historia_ejercito">A finales del siglo XVIII (1777), los duques de Alba mandan construir en esta finca el que habría de llamarse Palacio de Buenavista. Ricamente decorado con pinturas y esculturas, al palacio siempre lo ha acompañado la tragedia. Así tras dos incendios, el edificio les era expropiado a los duques en 1807 y Fernando VII lo ponía rápidamente a disposición de los militares.
-        Desde entonces, grandes personalidades de la Historia de España (los generales Espartero y Prim, Manuel Azaña, Miguel Primo de Rivera...) se han alojado entre sus paredes con desigual fortuna.\n\n
-        La primera de las historias en torno a este edificio nos habla de un guardia civil que se habría quitado la vida cerca de las Escaleras del Honor. Desde entonces no son pocas las voces de soldados que dicen haber escuchado pasos sin dueño, sentido cambios bruscos de temperatura e incluso se habla de una puerta blindada que se ha abierto sin que nadie accionase su mecanismo.\n\n
-        Hablábamos antes de la estancia de personalidades en el palacio. Para el general Prim esta sería su última morada puesto que el 30 de diciembre de 1870 el militar moriría en extrañas circunstancias y aún a día de hoy se puede percibir en sus aposentos una presencia inquisidora que parece querer urgirnos a descubrir la verdad sobre su muerte.\n</string>
-    <string name="title_activity_audio_maps">Audio Map</string>
+        Desde entonces, grandes personalidades de la Historia de España (los generales Espartero y Prim, Manuel Azaña, Miguel Primo de Rivera...) se han alojado entre sus paredes con desigual fortuna.\n
+        La primera de las historias en torno a este edificio nos habla de un guardia civil que se habría quitado la vida cerca de las Escaleras del Honor. Desde entonces no son pocas las voces de soldados que dicen haber escuchado pasos sin dueño, sentido cambios bruscos de temperatura e incluso se habla de una puerta blindada que se ha abierto sin que nadie accionase su mecanismo.\n
+        Hablábamos antes de la estancia de personalidades en el palacio. Para el general Prim esta sería su última morada puesto que el 30 de diciembre de 1870 el militar moriría en extrañas circunstancias y aún a día de hoy se puede percibir en sus aposentos una presencia inquisidora que parece querer urgirnos a descubrir la verdad sobre su muerte.</string>
+    <string name="information_ejercito">El último viernes de cada mes, hay relevo de guardia en la fallada de la calle Alcalá.\nPara visitiar el palacio mandar un correo a palaciodebuenavista@mde.es</string>
+
 </resources>

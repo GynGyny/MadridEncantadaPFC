@@ -9,4 +9,5 @@
     <color name="pesto_light">#00BF9A</color>
     <color name="pesto_medium">#00AA8D</color>
     <color name="pesto_very_light">#B9F6CA</color>
+    <color name="grey_very_light">#cfd8dc</color>
 </resources>
