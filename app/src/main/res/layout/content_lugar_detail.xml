@@ -27,13 +27,66 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/madrid" />
 
-            <TextView
-                android:id="@+id/tv_history"
+            <LinearLayout
+                android:id="@+id/ll_media_buttons_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="@string/history"
-                android:textSize="16sp" />
+                android:layout_alignParentBottom="true"
+                android:background="@color/pesto_very_light"
+                android:elevation="2dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="15dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                >
+
+                <ImageView
+                    android:id="@+id/iv_media_rew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:background="@drawable/selector_mediaplayer_buttons"
+                    android:elevation="2dp"
+                    android:padding="3dp"
+                    android:src="@android:drawable/ic_media_rew" />
+
+                <ImageView
+                    android:id="@+id/iv_media_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/selector_mediaplayer_buttons"
+                    android:elevation="2dp"
+                    android:padding="3dp"
+                    android:src="@android:drawable/ic_media_play" />
+
+                <ImageView
+                    android:id="@+id/iv_media_pause"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:background="@drawable/selector_mediaplayer_buttons"
+                    android:elevation="2dp"
+                    android:padding="3dp"
+                    android:src="@android:drawable/ic_media_pause" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="27dp"
+                android:layout_marginTop="15dp"
+                android:drawableLeft="@android:drawable/arrow_down_float"
+                android:drawablePadding="7dp"
+                android:text="@string/information"
+                android:textColor="@color/greyMedium"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_information"
@@ -42,6 +95,29 @@
                 android:layout_margin="20dp"
                 android:text="@string/information"
                 android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="27dp"
+                android:layout_marginTop="15dp"
+                android:drawableLeft="@android:drawable/arrow_down_float"
+                android:drawablePadding="7dp"
+                android:text="@string/history"
+                android:textColor="@color/greyMedium"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="@string/history"
+                android:textSize="16sp" />
+
+
         </LinearLayout>
     </ScrollView>
 

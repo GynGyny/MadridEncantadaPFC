@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
@@ -16,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,6 +25,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.util.Locale;
 
 import application.MadridEncantadaApp;
 import geo.rutas.madrid.com.madridencantada.R;
@@ -37,8 +41,16 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
     private TextView tvHistory;
     private TextView tvInfo;
     private ImageView ivPlaceBig;
+    private ImageView ivPause;
+    private ImageView ivPlay;
+    private ImageView ivRew;
     private LocationManager mLocationManager;
     private Location localizacion;
+    private MediaPlayer mediaPlayer;
+
+    private static String SPANISH = "español";
+
+
 
 
     @Override
@@ -48,6 +60,7 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_lugar_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_lugar_detail);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         /**1)asociamos nuestras variables a las de la vista XML
          2)le damos forma de lo que queremos
          3)enlazamos el "mundo real" con el "mundo de Tron"*/
@@ -55,10 +68,15 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
         tvHistory = (TextView) findViewById(R.id.tv_history);
         tvInfo = (TextView) findViewById(R.id.tv_information);
         ivPlaceBig = (ImageView) findViewById(R.id.iv_place);
+        ivPause = (ImageView) findViewById(R.id.iv_media_pause);
+        ivPlay = (ImageView) findViewById(R.id.iv_media_play);
+        ivRew = (ImageView) findViewById(R.id.iv_media_rew);
 
         getData();
         fillView();
         setOnClickListenerForButtons();
+
+        configureMediaPlayerByLanguage();
 
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -92,13 +110,24 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
 
     public void setOnClickListenerForButtons() {
         btGoToMap.setOnClickListener(this);
+        ivPause.setOnClickListener(this);
+        ivPlay.setOnClickListener(this);
+        ivRew.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
-        if (isGpsActive() && isUserLocated()) {
-            goToMap();
+        if (v==ivPause)
+            pauseAudio();
+        else if (v==ivPlay)
+            playMp3(lugar.getMp3IdSpa());
+        else if (v == ivRew)
+            rewAudio();
+        else if (v == btGoToMap) {
+            if (isGpsActive() && isUserLocated()) {
+                goToMap();
+            }
         }
     }
 
@@ -161,5 +190,40 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
             return true;
         }
     }
+
+
+    public void  playMp3 (Integer mp3Id){
+            if (!mediaPlayer.isPlaying())
+                mediaPlayer.start();
+    }
+
+
+    public void pauseAudio (){
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+        }
+    }
+
+
+    public void rewAudio (){
+        mediaPlayer.seekTo(0);
+        mediaPlayer.pause();
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
+    }
+
+    public void configureMediaPlayerByLanguage(){
+        if (Locale.getDefault().getDisplayLanguage().equals(SPANISH)){
+            mediaPlayer = MediaPlayer.create(this, lugar.getMp3IdSpa());
+        } else {
+            mediaPlayer = MediaPlayer.create(this, lugar.getMp3IdEng());
+        }
+    }
+
 
 }

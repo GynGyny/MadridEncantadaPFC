@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -26,6 +27,7 @@ public class AllPointsOfInterestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_all_points_of_interest);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         lvLugaresLista = (ListView) findViewById(R.id.lv_lista_lugares);
         List <Lugar> lugaresList = ((MadridEncantadaApp) getApplication()).getLugaresList();
         LugarAdapter adapter = new LugarAdapter(this, lugaresList);
@@ -47,7 +49,13 @@ public class AllPointsOfInterestActivity extends AppCompatActivity {
         //lo que le pasamos del listado de los puntos de interés al lugar para que lo "pinte"
         Intent intent = new Intent(this, LugarDetailActivity.class);
         intent.putExtra("LUGARINDEX", index);
-
         startActivity(intent);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
     }
 }

@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setAppLanguage();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getString(R.string.app_name));
         btMap = (Button) findViewById(R.id.button_map);
         btPointOfInterest = (Button) findViewById(R.id.button_point_of_interest);
         btOptions = (Button)findViewById(R.id.button_options);
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Lugar bancoEspania = new Lugar(getString(R.string.banco),"Banco", "A veces", R.drawable.banco_de_espana, R.drawable.pq_banco_de_espana, 40.418740, -3.694601,R.raw.bach,R.raw.hooked);
         Lugar ayuntamiento = new Lugar(getString(R.string.ayuntamiento),"Palacio Comunicaciones", "Metro Banco España", R.drawable.ayuntamiento_de_madrid, R.drawable.pq_ayuntamiento_de_madrid, 40.418633, -3.692476,R.raw.bach,R.raw.hooked);
         Lugar linares = new Lugar(getString(R.string.linares), "Casa de América", "Recoletos", R.drawable.casa_de_america, R.drawable.pq_casa_de_america, 40.419947, -3.692248,R.raw.bach,R.raw.hooked);
-        Lugar ejercito = new Lugar(getString(R.string.ejercito), getString(R.string.historia_ejercito), "Recoletos", R.drawable.cuartel_general_ejercito, R.drawable.pq_cuartel_general_ejercito, 40.421081, -3.694592,R.raw.bach,R.raw.hooked);
+        Lugar ejercito = new Lugar(getString(R.string.ejercito), getString(R.string.historia_ejercito), "Recoletos", R.drawable.cuartel_general_ejercito, R.drawable.pq_cuartel_general_ejercito, 40.421081, -3.694592,R.raw.bach,R.raw.es_ejercito);
         Lugar chimeneas = new Lugar(getString(R.string.chimenea), "7 chimeneas", "Recoletos", R.drawable.casa_de_las_7_chimeneas, R.drawable.pq_casa_de_las_7_chimeneas, 40.4202, -3.69666,R.raw.bach,R.raw.hooked);
         Lugar iglesia = new Lugar(getString(R.string.iglesia), "Iglesia de San José", "Gran vía", R.drawable.iglesia_de_san_jose, R.drawable.pq_iglesia_de_san_jose, 40.419068, -3.696654,R.raw.bach,R.raw.hooked);
         Lugar teatro = new Lugar(getString(R.string.teatro), "Teatro Español", "Plaza Santa Ana", R.drawable.teatro_espanol_madrid, R.drawable.pq_teatro_espanol_madrid, 40.414852, -3.699982,R.raw.bach,R.raw.hooked);

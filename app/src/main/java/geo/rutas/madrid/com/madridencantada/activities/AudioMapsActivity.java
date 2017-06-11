@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.support.v4.view.PagerTitleStrip;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -44,6 +45,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import application.MadridEncantadaApp;
 import geo.rutas.madrid.com.madridencantada.R;
@@ -57,22 +59,22 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
     private ImageView ivPlay;
     private ImageView ivPause;
     private TextView tvMiniMapName;
-    List<Marker> markers = new ArrayList<Marker>(); //Lista para los puntos del mapa
+    private List<Marker> markers = new ArrayList<Marker>(); //Lista para los puntos del mapa
     private MediaPlayer mediaPlayer;
-    List<Lugar> lugaresList;
-    List<Location> locationList;
+    private List<Lugar> lugaresList;
+    private List<Location> locationList;
     private Integer hasBeenPaused;
     private Integer currentPlace;  // lugar que estamos viendo actualmente
 
-
-    Location mLocation;
-    GoogleApiClient mGoogleApiClient;
+    private Location mLocation;
+    private GoogleApiClient mGoogleApiClient;
 
     private LocationRequest mLocationRequest;
     private long UPDATE_INTERVAL = 20000;  /* 20 secs */
     private long FASTEST_INTERVAL = 10000; /* 10 secs */
-
     private static double ACTION_RADIUS = 15.0;
+    private static String SPANISH = "español";
+
 
 
 
@@ -80,6 +82,7 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_maps);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -93,7 +96,6 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
         lugaresList = ((MadridEncantadaApp) getApplication()).getLugaresList();
         copyPlacesToLocationList();
         mediaPlayer = MediaPlayer.create(this, R.raw.audioplease);
-
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(LocationServices.API)
@@ -162,23 +164,6 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
 
-
-    public void pauseAudio (){
-        if (mediaPlayer.isPlaying()) {
-            mediaPlayer.pause();
-            hasBeenPaused = currentPlace;
-        }
-    }
-
-
-
-    public void rewAudio (){
-        mediaPlayer.seekTo(0);
-        mediaPlayer.pause();
-    }
-
-
-
     @Override
     protected void onStop() {
         super.onStop();
@@ -187,7 +172,6 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
             mediaPlayer.reset();
         }
     }
-
 
 
     @Override
@@ -272,8 +256,13 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
         for (int i = 0; i<locationList.size(); i++){
             if (location.distanceTo(locationList.get(i))<=ACTION_RADIUS){
                 currentPlace = i;
-                if (hasBeenPaused != currentPlace)
-                    playMp3(lugaresList.get(i).getMp3IdSpa());
+                if (hasBeenPaused != currentPlace) {
+                    if (Locale.getDefault().getDisplayLanguage().equals(SPANISH)){
+                        playMp3(lugaresList.get(i).getMp3IdSpa());
+                    } else {
+                        playMp3(lugaresList.get(i).getMp3IdEng());
+                    }
+                }
                 tvMiniMapName.setText("ESTÁS DENTRO DE " + lugaresList.get(i).getNombre());
                 break;
             }
@@ -307,7 +296,21 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
     }
 
 
-//Pintar un radio alrededor del punto de interés, para que el usuario sepa cuando saltará el audio
+    public void pauseAudio (){
+        if (mediaPlayer.isPlaying()) {
+            mediaPlayer.pause();
+            hasBeenPaused = currentPlace;
+        }
+    }
+
+
+    public void rewAudio (){
+        mediaPlayer.seekTo(0);
+        mediaPlayer.pause();
+    }
+
+
+    //Pintar un radio alrededor del punto de interés, para que el usuario sepa cuando saltará el audio
     private void addCircleToMap(LatLng latLng) {
         // draw circle
         int d = 500; // diameter
@@ -325,6 +328,13 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
                 image(bmD).
                 position(latLng,Math.round(ACTION_RADIUS)*2,Math.round(ACTION_RADIUS)*2).
                 transparency(0.4f));
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
     }
 }
 

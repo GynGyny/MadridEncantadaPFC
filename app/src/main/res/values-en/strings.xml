@@ -8,7 +8,7 @@
     <string name="banco">Bank of Spain</string>
     <string name="cabeza">Head Street</string>
     <string name="chimenea">The house of the 7 fireplace</string>
-    <string name="ejercito">Army headquartes</string>
+    <string name="ejercito">Headquarters of the Army</string>
     <string name="gps_network_not_enabled">Network not ativated</string>
     <string name="guide_me">Guide me</string>
     <string name="hotel">Gato\'s hostel</string>
@@ -40,4 +40,5 @@
     <string name="information">Information</string>
     <string name="title_activity_audio_maps">Audio Map</string>
     <string name="explain_audio"></string>
+    <string name="historia_ejercito">At the end of the eighteenth century (1777), the Dukes of Alba ordered to build on this estate what was to be called the Buenavista Palace. Richly decorated with paintings and sculptures, the palace has always been accompanied by tragedy. Thus after two fires, the building was expropriated to the dukes in 1807 and Fernando VII quickly made it available to the military. Since then, great personalities of the History of Spain (generals Espartero and Prim, Manuel Azaña, Miguel Primo de Rivera ...) have lodged between their walls with unequal fortune.  The first of the stories surrounding this building speaks of a Civil Guard who would have killed himself near the Stairs of Honor. Since then lot of soldiers say they have heard steps without owner, felt sudden changes of temperature and they even speak of an armored door that has opened without anyone triggering its mechanism.  We talked before the stay of personalities in the palace. For General Prim this would be his last dwelling since on December 30, 1870 this military man would die in strange circumstances and even today one can perceive in his quarters an inquisitive presence that seems to want to urge us to discover the truth about his death.</string>
 </resources>

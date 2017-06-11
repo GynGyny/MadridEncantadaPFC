@@ -11,6 +11,8 @@ import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -39,7 +41,7 @@ import application.MadridEncantadaApp;
 import geo.rutas.madrid.com.madridencantada.R;
 import models.Lugar;
 
-public class PointMapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, View.OnClickListener {
+public class PointMapActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, View.OnClickListener {
 
     private GoogleMap mMap;
     /**
@@ -51,7 +53,6 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     private ImageView ivMiniMapPlace;
     private TextView tvMiniMapName;
     private LinearLayout llDetailContainter;
-    private boolean locationPermissionGranted;
     private Integer currentPlaceIndex = null; //guarda la posición del array correspondiente al lugar que se está mostrando
 
 
@@ -61,9 +62,8 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_point_map);
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -71,20 +71,10 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-
-        // setContentView(R.layout.activity_point_map); //si pongo esta sentencia peta la app REVISARRRRR
-
-       /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarmap);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getString(R.string.map));*/
-
         ivMiniMapPlace = (ImageView) findViewById(R.id.iv_MiniMapPlace);
         tvMiniMapName = (TextView) findViewById(R.id.tv_MiniMapName);
         llDetailContainter = (LinearLayout) findViewById(R.id.linear_detail_container);
-
         llDetailContainter.setOnClickListener(this);
-
-
     }
 
 
@@ -111,6 +101,8 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
         //para  que salgan todos los puntos del mapa
         animateGoogleMapCamera();
     }
+
+
     public void animateGoogleMapCamera (){
         //Android map v2 zoom para mostrar los marcadores
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
@@ -190,14 +182,12 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
             Toast.makeText(this,getString(R.string.surf),Toast.LENGTH_SHORT).show();
         }
     }
-/**
- *  Intent intent = new Intent(this, LugarDetailActivity.class);
- intent.putExtra("LUGARINDEX", index);
 
- startActivity(intent);
- * Intent intent = getIntent();
- Integer placesListIndex = intent.getIntExtra("LUGARINDEX", 0);
- lugar = ((MadridEncantadaApp) getApplication()).getLugaresList().get(placesListIndex);
- */
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        onBackPressed();
+        return true;
+    }
 
 }

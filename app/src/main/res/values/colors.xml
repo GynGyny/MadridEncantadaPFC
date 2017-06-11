@@ -5,4 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="greyMedium">#737373</color>
     <color name="greyDark">#1f1f1f</color>
+    <color name="pesto_dark">#008975</color>
+    <color name="pesto_light">#00BF9A</color>
+    <color name="pesto_medium">#00AA8D</color>
+    <color name="pesto_very_light">#B9F6CA</color>
 </resources>
