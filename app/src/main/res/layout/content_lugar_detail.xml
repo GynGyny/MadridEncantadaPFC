@@ -45,34 +45,17 @@
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
+
+    <Button
+        android:id="@+id/button_go_to_map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:background="@android:color/holo_blue_dark"
+        android:drawableLeft="@android:drawable/ic_menu_mylocation"
+        android:gravity="center"
+        android:text="@string/guide_me"
+        android:textColor="@android:color/white" />
 
-        <Button
-            android:id="@+id/button_go_to_audio"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:background="@android:color/holo_green_dark"
-            android:drawableLeft="@android:drawable/ic_media_play"
-            android:text="@string/listen"
-            android:textColor="@android:color/white" />
-
-        <Button
-            android:id="@+id/button_go_to_map"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:background="@android:color/darker_gray"
-            android:drawableLeft="@android:drawable/ic_menu_mylocation"
-            android:text="@string/guide_me"
-            android:textColor="@android:color/white" />
-
-    </LinearLayout>
 
 </RelativeLayout>

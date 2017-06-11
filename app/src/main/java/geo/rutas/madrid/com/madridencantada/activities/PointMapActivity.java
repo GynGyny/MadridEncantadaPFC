@@ -91,14 +91,14 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        // comprobamos
-        //permisos para acceder a la posición GPS
+        // comprobamos los permisos para acceder a la posición GPS
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(this, "Acepta los permisos de geolocalización", Toast.LENGTH_LONG).show();
         } else {
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(true);
         }
+        //puntos del mapa
         mMap.setOnMarkerClickListener(this);
         List<Lugar> lugaresList = ((MadridEncantadaApp) getApplication()).getLugaresList();
         for (int i = 0; i < lugaresList.size(); i++) {
@@ -108,7 +108,7 @@ public class PointMapActivity extends FragmentActivity implements OnMapReadyCall
             Marker marker = mMap.addMarker(new MarkerOptions().position(lugar)); //Llenamos el array con los datos
             markers.add(marker);
         }
-        //para hacer zoom y que salgan todos los puntos del mapa
+        //para  que salgan todos los puntos del mapa
         animateGoogleMapCamera();
     }
     public void animateGoogleMapCamera (){

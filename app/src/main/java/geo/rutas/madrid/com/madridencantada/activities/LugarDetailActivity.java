@@ -33,7 +33,6 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
     private static final float LOCATION_REFRESH_DISTANCE = 50;
     private Lugar lugar;
     //Declaramos las variables
-    private Button btGoToAudio;
     private Button btGoToMap;
     private TextView tvHistory;
     private TextView tvInfo;
@@ -50,9 +49,8 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_lugar_detail);
         setSupportActionBar(toolbar);
         /**1)asociamos nuestras variables a las de la vista XML
-        2)le damos forma de lo que queremos
-        3)enlazamos el "mundo real" con el "mundo de Tron"*/
-        btGoToAudio = (Button) findViewById(R.id.button_go_to_audio);
+         2)le damos forma de lo que queremos
+         3)enlazamos el "mundo real" con el "mundo de Tron"*/
         btGoToMap = (Button) findViewById(R.id.button_go_to_map);
         tvHistory = (TextView) findViewById(R.id.tv_history);
         tvInfo = (TextView) findViewById(R.id.tv_information);
@@ -94,18 +92,13 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
 
     public void setOnClickListenerForButtons() {
         btGoToMap.setOnClickListener(this);
-        btGoToAudio.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
-
-        if (v == btGoToAudio) {
-        } else {   //click en goToMap
-            if (isGpsActive() && isUserLocated()) {
-                goToMap();
-            }
+        if (isGpsActive() && isUserLocated()) {
+            goToMap();
         }
     }
 

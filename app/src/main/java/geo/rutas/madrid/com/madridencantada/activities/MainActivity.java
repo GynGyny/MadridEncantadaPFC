@@ -2,6 +2,7 @@ package geo.rutas.madrid.com.madridencantada.activities;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -9,6 +10,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -95,9 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void goToOptionsActivity() {
-        Intent intent = new Intent(this, OptionsActivity.class);
-        startActivity(intent);
-        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);  // TODO ANIMACIONES !!!
+        showDialog();
     }
 
     private void goToAudioActivity() {
@@ -126,8 +126,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Lugar palacio = new Lugar(getString(R.string.palacio), "Palacio de Santa Cruz", "palacio", R.drawable.palacio_de_santa_cruz, R.drawable.pq_palacio_de_santa_cruz, 40.4147, -3.706031,R.raw.bach,R.raw.hooked);
         Lugar mayor = new Lugar(getString(R.string.mayor), "Plaza Mayor", "Plaza Mayor", R.drawable.plaza_mayor, R.drawable.pq_plaza_mayor, 40.415556, -3.707222,R.raw.bach,R.raw.hooked);
 
-        Lugar universidad = new Lugar("UNIVERSIDAD","1","2", R.drawable.plaza_mayor, R.drawable.pq_plaza_mayor, 40.3484362, -3.844547,R.raw.bach,R.raw.hooked);
-
+       // Lugar universidad = new Lugar("UNIVERSIDAD","1","2", R.drawable.plaza_mayor, R.drawable.pq_plaza_mayor, 40.341328, -3.845749,R.raw.bach,R.raw.audios_cortos);
+        //Lugar retamas = new Lugar("RETAMAS","1","2", R.drawable.plaza_mayor, R.drawable.pq_plaza_mayor, 40.3407826,-3.845783,R.raw.bach,R.raw.es_ejercito);
 
         lugaresList.add(reinaSofia);
         lugaresList.add(bancoEspania);
@@ -142,11 +142,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lugaresList.add(cabeza);
         lugaresList.add(palacio);
         lugaresList.add(mayor);
-        lugaresList.add(universidad);
+        //lugaresList.add(universidad);
+        //lugaresList.add(retamas);
         return lugaresList;
     }
 
 
+    private void showDialog() {
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
+        b.setTitle(getResources().getString(R.string.str_button));
+        //obtiene los idiomas del array de string.xml
+        String[] types = getResources().getStringArray(R.array.languages);
+        b.setItems(types, new DialogInterface.OnClickListener() {
 
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                SharedPreferences sharedPreferences = getSharedPreferences("MisPreferencias", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                switch (which) {
+                    case 0:
+                        editor.putString(getString(R.string.language_key_preferencias), "es");
+                        break;
+                    case 1:
+                        editor.putString(getString(R.string.language_key_preferencias), "en");
+                        break;
+                }
+                editor.commit();
+                dialog.dismiss();
+                //Cambia el idioma de la aplicación
+                Intent refresh = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(refresh);
+                finish();
+            }
+
+        });
+
+        b.show();
+    }
 
 }

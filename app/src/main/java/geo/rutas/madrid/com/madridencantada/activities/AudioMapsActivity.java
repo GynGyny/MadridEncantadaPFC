@@ -3,6 +3,9 @@ package geo.rutas.madrid.com.madridencantada.activities;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.location.Location;
 import android.media.MediaPlayer;
 import android.os.Build;
@@ -31,6 +34,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.GroundOverlayOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -55,6 +61,9 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
     private MediaPlayer mediaPlayer;
     List<Lugar> lugaresList;
     List<Location> locationList;
+    private Integer hasBeenPaused;
+    private Integer currentPlace;  // lugar que estamos viendo actualmente
+
 
     Location mLocation;
     GoogleApiClient mGoogleApiClient;
@@ -79,9 +88,11 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
         ivPlay = (ImageView) findViewById(R.id.iv_media_play);
         ivRew = (ImageView) findViewById(R.id.iv_media_rew);
         tvMiniMapName = (TextView) findViewById(R.id.tv_MiniMapName);
+        tvMiniMapName.setText(getString(R.string.explain_audio));
         addOnclickListeners();
         lugaresList = ((MadridEncantadaApp) getApplication()).getLugaresList();
         copyPlacesToLocationList();
+        mediaPlayer = MediaPlayer.create(this, R.raw.audioplease);
 
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -100,6 +111,7 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
         for (int i = 0; i < lugaresList.size(); i++) {
             // Add a marker in -- and move the camera
             LatLng lugar = new LatLng(lugaresList.get(i).getLatitudLongitud().latitude, lugaresList.get(i).getLatitudLongitud().longitude);
+            addCircleToMap(lugar);
             mMap.addMarker(new MarkerOptions().position(lugar).title(lugaresList.get(i).getNombre()));
             Marker marker = mMap.addMarker(new MarkerOptions().position(lugar)); //Llenamos el array con los datos
             markers.add(marker);
@@ -139,9 +151,11 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
 
     @Override
     public void onClick(View v) {
-        if (v == ivPlay)
-            playAudio();
-        else if (v==ivPause)
+        if (v == ivPlay) {
+            currentPlace = null;
+            hasBeenPaused = null;
+            playMp3(null);
+        } else if (v==ivPause)
             pauseAudio();
         else if (v==ivRew)
             rewAudio();
@@ -149,20 +163,11 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
 
 
 
-    public void playAudio (){
-        if (mediaPlayer==null){
-            mediaPlayer = MediaPlayer.create(this, R.raw.bach);
-            mediaPlayer.start();
-        } else {
-            mediaPlayer.start();
-        }
-    }
-
-
-
     public void pauseAudio (){
-        if (mediaPlayer.isPlaying())
+        if (mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
+            hasBeenPaused = currentPlace;
+        }
     }
 
 
@@ -262,12 +267,14 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
 
     @Override
     public void onLocationChanged(Location location) {   // CALLBACK PARA LOS CAMBIOS DE UBICACIÓN
-        if(location!=null)
-            tvMiniMapName.setText("Latitude : "+location.getLatitude()+" , Longitude : "+location.getLongitude());
+        /*if(location!=null)
+            tvMiniMapName.setText("Latitude : "+location.getLatitude()+" , Longitude : "+location.getLongitude());*/
         for (int i = 0; i<locationList.size(); i++){
             if (location.distanceTo(locationList.get(i))<=ACTION_RADIUS){
-                playMp3(lugaresList.get(i).getMp3IdSpa());
-                Toast.makeText(this,"ESTÁS DENTRO TARUGA", Toast.LENGTH_LONG).show();
+                currentPlace = i;
+                if (hasBeenPaused != currentPlace)
+                    playMp3(lugaresList.get(i).getMp3IdSpa());
+                tvMiniMapName.setText("ESTÁS DENTRO DE " + lugaresList.get(i).getNombre());
                 break;
             }
         }
@@ -285,23 +292,39 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
         }
     }
 
-    public void  playMp3 (int mp3Id){
-        if (mediaPlayer==null)
-            mediaPlayer = MediaPlayer.create(this, mp3Id);
 
-        if (!mediaPlayer.isPlaying()) {
-            mediaPlayer.start();
+    public void  playMp3 (Integer mp3Id){
+        if (mp3Id==null){
+            if (!mediaPlayer.isPlaying()) {
+                mediaPlayer.start();
+            }
+        } else {
+            if (!mediaPlayer.isPlaying()) {
+                mediaPlayer = MediaPlayer.create(this, mp3Id);
+                mediaPlayer.start();
+            }
         }
     }
 
-  /*  public void playAudio (){
-        if (mediaPlayer==null){
-            mediaPlayer = MediaPlayer.create(this, R.raw.bach);
-            mediaPlayer.start();
-        } else {
-            mediaPlayer.start();
-        }
-    }*/
 
+//Pintar un radio alrededor del punto de interés, para que el usuario sepa cuando saltará el audio
+    private void addCircleToMap(LatLng latLng) {
+        // draw circle
+        int d = 500; // diameter
+        Bitmap bm = Bitmap.createBitmap(d, d, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bm);
+        Paint p = new Paint();
+        p.setColor(getResources().getColor(R.color.wallet_holo_blue_light));
+        c.drawCircle(d/2, d/2, d/2, p);
+
+        // generate BitmapDescriptor from circle Bitmap
+        BitmapDescriptor bmD = BitmapDescriptorFactory.fromBitmap(bm);
+
+// mapView is the GoogleMap
+        mMap.addGroundOverlay(new GroundOverlayOptions().
+                image(bmD).
+                position(latLng,Math.round(ACTION_RADIUS)*2,Math.round(ACTION_RADIUS)*2).
+                transparency(0.4f));
+    }
 }
 

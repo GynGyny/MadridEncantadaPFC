@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:background="@color/greyMedium"
-            android:text="@string/options"
+            android:text="@string/language"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
 
