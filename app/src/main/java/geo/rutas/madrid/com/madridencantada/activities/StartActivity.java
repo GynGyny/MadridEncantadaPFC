@@ -19,7 +19,7 @@ public class StartActivity extends AppCompatActivity {
             public void run() {
                 goToMainActivity();
             }
-        }, 5000);   //5 seconds
+        }, 3000);   //3 seconds
     }
 
     public void goToMainActivity(){

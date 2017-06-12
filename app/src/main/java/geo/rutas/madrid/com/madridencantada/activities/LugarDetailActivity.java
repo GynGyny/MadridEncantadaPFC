@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +38,7 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
     private static final float LOCATION_REFRESH_DISTANCE = 50;
     private Lugar lugar;
     //Declaramos las variables
-    private Button btGoToMap;
+    private RelativeLayout btGoToMap;
     private TextView tvHistory;
     private TextView tvInfo;
     private ImageView ivPlaceBig;
@@ -64,7 +65,7 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
         /**1)asociamos nuestras variables a las de la vista XML
          2)le damos forma de lo que queremos
          3)enlazamos el "mundo real" con el "mundo de Tron"*/
-        btGoToMap = (Button) findViewById(R.id.button_go_to_map);
+        btGoToMap = (RelativeLayout) findViewById(R.id.button_go_to_map);
         tvHistory = (TextView) findViewById(R.id.tv_history);
         tvInfo = (TextView) findViewById(R.id.tv_information);
         ivPlaceBig = (ImageView) findViewById(R.id.iv_place);
