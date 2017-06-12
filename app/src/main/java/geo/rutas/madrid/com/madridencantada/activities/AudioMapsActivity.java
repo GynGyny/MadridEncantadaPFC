@@ -138,7 +138,7 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
         LatLngBounds bounds = builder.build();
         int padding = 100; // Pixels para el desplazamiento de los bordes del mapa (zoom)
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-        mMap.moveCamera(cu);
+        mMap.animateCamera(cu);
     }
 
 

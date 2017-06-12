@@ -110,9 +110,9 @@ public class PointMapActivity extends AppCompatActivity implements OnMapReadyCal
             builder.include(marker.getPosition());
         }
         LatLngBounds bounds = builder.build();
-        int padding = 100; // Pixels para el desplazamiento de los bordes del mapa (zoom)
+        int padding = 100; // Pixels para el margen de los bordes del mapa
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-        mMap.moveCamera(cu);
+        mMap.animateCamera(cu);
     }
 
 

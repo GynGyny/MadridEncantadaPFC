@@ -31,48 +31,150 @@
         android:orientation="vertical">
 
         <!--Botón de "mapa"-->
-        <Button
+
+        <RelativeLayout
             android:id="@+id/button_map"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@color/pesto_light"
-            android:text="@string/map"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:layout_height="?attr/listPreferredItemHeightSmall"
+            android:layout_gravity="center"
+            android:layout_marginBottom="7dp"
+            android:background="@drawable/selector_button_main"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="7dp"
+                android:src="@drawable/map" />
+
+            <TextView
+                android:id="@+id/tv_map"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="@string/map"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
 
         <!--Botón de "puntos de interés"-->
-        <Button
+
+        <RelativeLayout
             android:id="@+id/button_point_of_interest"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@color/pesto_light"
-            android:text="@string/points_of_interest"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:layout_height="?attr/listPreferredItemHeightSmall"
+            android:layout_gravity="center"
+            android:layout_marginBottom="7dp"
+            android:background="@drawable/selector_button_main"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="7dp"
+                android:src="@drawable/pin" />
+
+            <TextView
+                android:id="@+id/tv_points_of_interest"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="@string/points_of_interest"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
 
         <!--Botón de "auidio guía"-->
-        <Button
+
+        <RelativeLayout
             android:id="@+id/button_audio_guide"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@color/pesto_light"
-            android:text="@string/audio_guide"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:layout_height="?attr/listPreferredItemHeightSmall"
+            android:layout_gravity="center"
+            android:layout_marginBottom="7dp"
+            android:background="@drawable/selector_button_main"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="7dp"
+                android:src="@drawable/headphones" />
+
+            <TextView
+                android:id="@+id/tv_audio_guide"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="@string/audio_guide"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
 
         <!--Botón de "opciones"-->
-        <Button
+
+        <RelativeLayout
             android:id="@+id/button_options"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@color/pesto_light"
-            android:text="@string/language"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:layout_height="?attr/listPreferredItemHeightSmall"
+            android:layout_gravity="center"
+            android:background="@drawable/selector_button_main"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="7dp"
+                android:src="@drawable/translator" />
+
+            <TextView
+                android:id="@+id/tv_language"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="@string/language"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
 
 
     </LinearLayout>

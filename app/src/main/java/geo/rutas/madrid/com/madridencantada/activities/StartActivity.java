@@ -26,6 +26,6 @@ public class StartActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.cycle_interpolator);  // TODO ANIMACIONES !!!
-
+        finish();
     }
 }

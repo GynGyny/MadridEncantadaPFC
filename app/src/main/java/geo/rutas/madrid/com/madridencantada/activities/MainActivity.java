@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,10 +27,10 @@ import models.Lugar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btMap;
-    private Button btPointOfInterest;
-    private Button btOptions;
-    private Button btAudioGuide;
+    private RelativeLayout btMap;     // Son RelativeLayouts pero los usamos como botones
+    private RelativeLayout btPointOfInterest;
+    private RelativeLayout btOptions;
+    private RelativeLayout btAudioGuide;
 
     private static String SPANISH = "es";
 
@@ -43,10 +44,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
-        btMap = (Button) findViewById(R.id.button_map);
-        btPointOfInterest = (Button) findViewById(R.id.button_point_of_interest);
-        btOptions = (Button)findViewById(R.id.button_options);
-        btAudioGuide = (Button) findViewById(R.id.button_audio_guide);
+        btMap = (RelativeLayout) findViewById(R.id.button_map);
+        btPointOfInterest = (RelativeLayout) findViewById(R.id.button_point_of_interest);
+        btOptions = (RelativeLayout)findViewById(R.id.button_options);
+        btAudioGuide = (RelativeLayout) findViewById(R.id.button_audio_guide);
         setOnClickListenersForButtons();
         ((MadridEncantadaApp) getApplication()).setLugaresList(getAllPlaces());
     }
