@@ -110,11 +110,10 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void setOnClickListenerForButtons() {
-        btGoToMap.setOnClickListener(this);
-        ivPause.setOnClickListener(this);
-        ivPlay.setOnClickListener(this);
-        ivRew.setOnClickListener(this);
-
+        btGoToMap.setOnClickListener(this); //va al mapa de la geolocaliación
+        ivPause.setOnClickListener(this); //pausa el audio
+        ivPlay.setOnClickListener(this); //reproduce el audio
+        ivRew.setOnClickListener(this); //para el audio
     }
 
     @Override
@@ -139,7 +138,6 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
                         localizacion.getLongitude() + "&daddr=" + lugar.getLatitudLongitud().latitude +
                         "," + lugar.getLatitudLongitud().longitude));
         startActivity(intent);
-
     }
 
 

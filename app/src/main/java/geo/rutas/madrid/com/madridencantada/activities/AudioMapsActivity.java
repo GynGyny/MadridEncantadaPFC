@@ -95,7 +95,7 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
         addOnclickListeners();
         lugaresList = ((MadridEncantadaApp) getApplication()).getLugaresList();
         copyPlacesToLocationList();
-        mediaPlayer = MediaPlayer.create(this, R.raw.audioplease);
+        mediaPlayer = MediaPlayer.create(this, R.raw.es_aproximate);
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(LocationServices.API)
@@ -313,7 +313,6 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
 
     //Pintar un radio alrededor del punto de interés, para que el usuario sepa cuando saltará el audio
     private void addCircleToMap(LatLng latLng) {
-        // draw circle
         int d = 500; // diameter
         Bitmap bm = Bitmap.createBitmap(d, d, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(bm);
@@ -323,8 +322,6 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
 
         // generate BitmapDescriptor from circle Bitmap
         BitmapDescriptor bmD = BitmapDescriptorFactory.fromBitmap(bm);
-
-// mapView is the GoogleMap
         mMap.addGroundOverlay(new GroundOverlayOptions().
                 image(bmD).
                 position(latLng,Math.round(ACTION_RADIUS)*2,Math.round(ACTION_RADIUS)*2).
