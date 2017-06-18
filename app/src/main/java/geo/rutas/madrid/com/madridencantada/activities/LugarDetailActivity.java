@@ -171,7 +171,7 @@ public class LugarDetailActivity extends AppCompatActivity implements View.OnCli
         gps_enabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         network_enabled = mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
         if (!gps_enabled && !network_enabled) {
-            Toast.makeText(this, "Se necesitan permisos de Geolocalización", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.toast_gps, Toast.LENGTH_LONG).show();
             Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
             startActivity(myIntent);
             return false;
