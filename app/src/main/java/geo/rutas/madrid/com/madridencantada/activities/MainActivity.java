@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void goToMapActitivity() {
         Intent intent = new Intent(this, PointMapActivity.class);
         startActivity(intent);
-        //overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);  // TODO ANIMACIONES !!!
+        overridePendingTransition(android.R.anim.slide_in_left, android.R.anim.slide_out_right);  // TODO ANIMACIONES !!!
     }
 
     private void goToPointOfInterestAcivity() {

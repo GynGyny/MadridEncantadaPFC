@@ -95,8 +95,8 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
         addOnclickListeners();
         lugaresList = ((MadridEncantadaApp) getApplication()).getLugaresList();
         copyPlacesToLocationList();
-        mediaPlayer = MediaPlayer.create(this, R.raw.es_aproximate);
-
+        //mediaPlayer = MediaPlayer.create(this, R.raw.es_aproximate);
+        configureMediaPlayerByLanguage();
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(LocationServices.API)
                 .addConnectionCallbacks(this)
@@ -135,10 +135,14 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
         for (Marker marker : markers) {
             builder.include(marker.getPosition());
         }
-        LatLngBounds bounds = builder.build();
+        /*LatLngBounds bounds = builder.build();
         int padding = 100; // Pixels para el desplazamiento de los bordes del mapa (zoom)
         CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-        mMap.animateCamera(cu);
+        mMap.animateCamera(cu);*/
+        LatLng coordinate = new LatLng(40.416852, -3.695554);
+        CameraUpdate location = CameraUpdateFactory.newLatLngZoom( coordinate, 14);
+        mMap.animateCamera(location);
+
     }
 
 
@@ -333,6 +337,14 @@ public class AudioMapsActivity extends AppCompatActivity implements OnMapReadyCa
     public boolean onOptionsItemSelected(MenuItem item) {
         onBackPressed();
         return true;
+    }
+
+    public void configureMediaPlayerByLanguage(){
+        if (Locale.getDefault().getDisplayLanguage().equals(SPANISH)){
+            mediaPlayer = MediaPlayer.create(this, R.raw.es_aproximate);
+        } else {
+            mediaPlayer = MediaPlayer.create(this, R.raw.en_aproximate);
+        }
     }
 }
 

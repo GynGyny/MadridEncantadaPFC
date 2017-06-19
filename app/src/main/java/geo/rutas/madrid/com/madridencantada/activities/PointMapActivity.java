@@ -59,6 +59,7 @@ public class PointMapActivity extends AppCompatActivity implements OnMapReadyCal
     List<Marker> markers = new ArrayList<Marker>(); //Lista para los puntos del mapa
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,14 +106,22 @@ public class PointMapActivity extends AppCompatActivity implements OnMapReadyCal
 
     public void animateGoogleMapCamera (){
         //Android map v2 zoom para mostrar los marcadores
-        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        /*LatLngBounds.Builder builder = new LatLngBounds.Builder();
         for (Marker marker : markers) {
             builder.include(marker.getPosition());
         }
-        LatLngBounds bounds = builder.build();
-        int padding = 100; // Pixels para el margen de los bordes del mapa
-        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-        mMap.animateCamera(cu);
+        LatLngBounds bounds = builder.build();*/
+       // LatLng coordinate = new LatLng(lat, lng);
+        //Store these lat lng values somewhere. These should be constant. CameraUpdate location = CameraUpdateFactory.newLatLngZoom( coordinate, 15); mMap.animateCamera(location);
+        LatLng coordinate = new LatLng(40.416852, -3.695554);
+        CameraUpdate location = CameraUpdateFactory.newLatLngZoom( coordinate, 14);
+        mMap.animateCamera(location);
+
+
+        /*int padding = 100; // Pixels para el margen de los bordes del mapa
+        CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(LatLngBounds, padding);
+        mMap.animateCamera(cu);*/
+
     }
 
 
